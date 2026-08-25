@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Artisan Profile | Hidden Gems</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* Profile Header */
+
+        .profile-header {
+            background: #f1d3b9;
+            padding: 60px 20px;
+        }
+
+        .profile-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: #ead0bd;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 75px;
+
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .profile-info h1 {
+            color: #3d261b;
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .verified-badge {
+            display: inline-block;
+            background: #e7f5e9;
+            color: #287a34;
+
+            padding: 6px 12px;
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+        .profile-info p {
+            color: #664b3c;
+            margin: 7px 0;
+        }
+
+
+        /* Main Profile */
+
+        .profile-main {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            margin-bottom: 25px;
+        }
+
+        .profile-card h2 {
+            color: #3d261b;
+            margin-bottom: 18px;
+        }
+
+        .profile-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+
+        /* Details */
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .detail-box {
+            background: #fffaf5;
+            padding: 18px;
+            border-radius: 8px;
+        }
+
+        .detail-box strong {
+            display: block;
+            color: #c56b32;
+            margin-bottom: 6px;
+        }
+
+        .detail-box span {
+            color: #555;
+        }
+
+
+        /* Products */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .product {
+            background: #fffaf5;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .product h3 {
+            color: #4b2e20;
+            font-size: 17px;
+        }
+
+        .product p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+
+        /* Craft Process */
+
+        .process-step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            min-width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+            background: #c56b32;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+        }
+
+        .process-step h3 {
+            color: #4b2e20;
+            margin-bottom: 5px;
+        }
+
+
+        /* Contact Box */
+
+        .contact-box {
+            background: #3d261b;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 13px 22px;
+
+            background: #c56b32;
+            color: white;
+
+            text-decoration: none;
+            border-radius: 7px;
+
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            background: #e07d3c;
+        }
+
+
+        /* Knowledge */
+
+        .knowledge-box {
+            background: #fff7ed;
+            border-left: 5px solid #c56b32;
+
+            padding: 20px;
+            border-radius: 7px;
+        }
+
+        .knowledge-box h3 {
+            color: #4b2e20;
+            margin-bottom: 8px;
+        }
+
+
+        /* Responsive */
+
+        @media (max-width: 800px) {
+
+            .profile-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-main {
+                grid-template-columns: 1fr;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Hidden<span>Gems</span>
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="artisans.html">
+                        Explore Artisans
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#categories">
+                        Categories
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">
+                        About Us
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="nav-buttons">
+
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+                <a href="register.html" class="register-btn">
+                    Register
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- Profile Header -->
+
+    <section class="profile-header">
+
+        <div class="profile-container">
+
+            <div class="profile-top">
+
+
+                <div class="profile-photo">
+                    👩‍🎨
+                </div>
+
+
+                <div class="profile-info">
+
+                    <span class="verified-badge">
+                        ✓ Verified Artisan
+                    </span>
+
+                    <h1>
+                        Meena Sharma
+                    </h1>
+
+                    <p>
+                        🎨 Handicraft Artist
+                    </p>
+
+                    <p>
+                        📍 Mumbai, Maharashtra
+                    </p>
+
+                    <p>
+                        ⭐ 8+ Years of Experience
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Main Content -->
+
+    <main class="profile-main">
+
+
+        <!-- Left Side -->
+
+        <div>
+
+
+            <!-- About -->
+
+            <div class="profile-card">
+
+                <h2>
+                    About the Artisan
+                </h2>
+
+                <p>
+
+                    Meena Sharma is a local handicraft artist
+                    who creates traditional handmade products.
+                    She has been practicing traditional craft
+                    techniques for more than 8 years.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    Her work focuses on preserving traditional
+                    designs while creating useful and decorative
+                    handmade products for the community.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Details -->
+
+            <div class="profile-card">
+
+                <h2>
+                    Artisan Details
+                </h2>
+
+
+                <div class="details-grid">
+
+                    <div class="detail-box">
+
+                        <strong>
+                            Skill
+                        </strong>
+
+                        <span>
+                            Traditional Handicrafts
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>
+                            Category
+                        </strong>
+
+                        <span>
+                            Handicrafts
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>
+                            Location
+                        </strong>
+
+                        <span>
+                            Mumbai
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>
+                            Experience
+                        </strong>
+
+                        <span>
+                            8+ Years
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Products -->
+
+            <div class="profile-card">
+
+                <h2>
+                    Handmade Products
+                </h2>
+
+
+                <div class="products">
+
+
+                    <div class="product">
+
+                        <div class="product-icon">
+                            🧺
+                        </div>
+
+                        <h3>
+                            Handmade Basket
+                        </h3>
+
+                        <p>
+                            Traditional woven basket
+                        </p>
+
+                    </div>
+
+
+                    <div class="product">
+
+                        <div class="product-icon">
+                            🪆
+                        </div>
+
+                        <h3>
+                            Craft Decoration
+                        </h3>
+
+                        <p>
+                            Handmade decorative item
+                        </p>
+
+                    </div>
+
+
+                    <div class="product">
+
+                        <div class="product-icon">
+                            🧶
+                        </div>
+
+                        <h3>
+                            Handmade Craft
+                        </h3>
+
+                        <p>
+                            Traditional handmade design
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Craft Process -->
+
+            <div class="profile-card">
+
+                <h2>
+                    Craft-Making Process
+                </h2>
+
+
+                <div class="process-step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Material Selection
+                        </h3>
+
+                        <p>
+                            The artisan selects suitable
+                            natural and locally available
+                            materials.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Traditional Preparation
+                        </h3>
+
+                        <p>
+                            Materials are prepared using
+                            traditional techniques passed
+                            through generations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Craft Creation
+                        </h3>
+
+                        <p>
+                            The artisan carefully creates
+                            the handmade product.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Final Finishing
+                        </h3>
+
+                        <p>
+                            The finished product is checked
+                            and prepared for customers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Knowledge Preservation -->
+
+            <div class="profile-card">
+
+                <h2>
+                    📚 Knowledge Preservation
+                </h2>
+
+
+                <div class="knowledge-box">
+
+                    <h3>
+                        Traditional Skill Documentation
+                    </h3>
+
+                    <p>
+
+                        This artisan has documented the
+                        traditional techniques used in
+                        handicraft making so that the knowledge
+                        can be preserved and shared with future
+                        generations.
+
+                    </p>
+
+                    <br>
+
+                    <a
+                        href="knowledge.html"
+                        class="contact-btn">
+
+                        View Knowledge
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- Right Side -->
+
+        <div>
+
+
+            <!-- Contact -->
+
+            <div class="contact-box">
+
+                <h2>
+                    Interested in this Artisan?
+                </h2>
+
+                <p>
+
+                    Send a contact request to connect
+                    with the artisan. Personal contact
+                    details will remain protected.
+
+                </p>
+
+
+                <button
+                    class="contact-btn"
+                    onclick="sendContactRequest()">
+
+                    📩 Send Contact Request
+
+                </button>
+
+            </div>
+
+
+            <br>
+
+
+            <!-- Quick Information -->
+
+            <div class="profile-card">
+
+                <h2>
+                    Quick Information
+                </h2>
+
+                <p>
+                    ✓ Verified Profile
+                </p>
+
+                <p>
+                    ✓ Traditional Skill
+                </p>
+
+                <p>
+                    ✓ Local Artisan
+                </p>
+
+                <p>
+                    ✓ Knowledge Documented
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <h2>
+                    Hidden<span>Gems</span>
+                </h2>
+
+                <p>
+                    Connecting communities with local
+                    artisans and traditional skills.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="artisans.html">
+                    Artisans
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Email: support@hiddengems.com
+                </p>
+
+                <p>
+                    Local Artisan Community Platform
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Hidden Gems – Local Artisans & Skills Platform
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+        function sendContactRequest() {
+
+            alert(
+                "Contact request sent successfully! The artisan will receive your request."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

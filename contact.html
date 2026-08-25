@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Artisan | Hidden Gems</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .contact-page {
+            background: #fffaf5;
+            padding: 60px 20px 80px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-header h1 {
+            color: #3d261b;
+            font-size: 40px;
+            margin: 10px 0;
+        }
+
+        .contact-header p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .contact-container {
+            max-width: 950px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+        }
+
+        /* Artisan Card */
+
+        .artisan-card-contact {
+            background: #3d261b;
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            height: fit-content;
+        }
+
+        .artisan-photo {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+            background: #ead0bd;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 55px;
+        }
+
+        .artisan-card-contact h2 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .artisan-card-contact .skill {
+            text-align: center;
+            color: #f1b07e;
+            margin-bottom: 25px;
+        }
+
+        .artisan-detail {
+            padding: 12px 0;
+            border-bottom: 1px solid #60493c;
+            color: #ddd;
+        }
+
+        .privacy-box {
+            margin-top: 25px;
+            background: #4d3428;
+            padding: 15px;
+            border-radius: 8px;
+            color: #ddd;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* Contact Form */
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .contact-form h2 {
+            color: #3d261b;
+            margin-bottom: 8px;
+        }
+
+        .form-description {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4b2e20;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+
+            border: 1px solid #ddd;
+            border-radius: 7px;
+
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c56b32;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+
+            border: none;
+            border-radius: 7px;
+
+            background: #c56b32;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #9f4f22;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #777;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #c56b32;
+        }
+
+        .success-message {
+            display: none;
+
+            background: #e7f5e9;
+            color: #287a34;
+
+            padding: 15px;
+            border-radius: 7px;
+
+            margin-bottom: 20px;
+
+            text-align: center;
+        }
+
+        @media (max-width: 750px) {
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-header h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Hidden<span>Gems</span>
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="artisans.html">
+                        Explore Artisans
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#categories">
+                        Categories
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">
+                        About Us
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="nav-buttons">
+
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- Contact Page -->
+
+    <section class="contact-page">
+
+
+        <div class="contact-header">
+
+            <p class="small-title">
+                CONNECT WITH ARTISANS
+            </p>
+
+            <h1>
+                Send a Contact Request
+            </h1>
+
+            <p>
+                Interested in an artisan's work?
+                Send a request and connect with them
+                through Hidden Gems.
+            </p>
+
+        </div>
+
+
+
+        <div class="contact-container">
+
+
+            <!-- Artisan Information -->
+
+            <div class="artisan-card-contact">
+
+
+                <div class="artisan-photo">
+                    👩‍🎨
+                </div>
+
+
+                <h2>
+                    Meena Sharma
+                </h2>
+
+
+                <div class="skill">
+                    Handicraft Artist
+                </div>
+
+
+                <div class="artisan-detail">
+                    📍 Mumbai, Maharashtra
+                </div>
+
+
+                <div class="artisan-detail">
+                    🎨 Traditional Handicrafts
+                </div>
+
+
+                <div class="artisan-detail">
+                    ⭐ 8+ Years Experience
+                </div>
+
+
+                <div class="artisan-detail">
+                    ✓ Verified Artisan
+                </div>
+
+
+                <div class="privacy-box">
+
+                    🔒 <strong>Privacy Protected</strong>
+
+                    <br>
+
+                    Your request will be sent through the
+                    platform. The artisan's personal contact
+                    details will not be displayed directly.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Form -->
+
+            <div class="contact-form">
+
+
+                <h2>
+                    Contact Request
+                </h2>
+
+                <p class="form-description">
+                    Please provide your details and explain
+                    why you would like to contact this artisan.
+                </p>
+
+
+                <div
+                    id="successMessage"
+                    class="success-message">
+
+                    ✓ Contact request sent successfully!
+
+                </div>
+
+
+                <form id="contactForm">
+
+
+                    <!-- Name -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Full Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Reason -->
+
+                    <div class="form-group">
+
+                        <label for="reason">
+                            Reason for Contact *
+                        </label>
+
+                        <select
+                            id="reason"
+                            required>
+
+                            <option value="">
+                                Select reason
+                            </option>
+
+                            <option value="Product Inquiry">
+                                Product Inquiry
+                            </option>
+
+                            <option value="Learning">
+                                Learn the Craft
+                            </option>
+
+                            <option value="Collaboration">
+                                Collaboration
+                            </option>
+
+                            <option value="Workshop">
+                                Workshop / Training
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Message -->
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message *
+                        </label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        📩 Send Contact Request
+
+                    </button>
+
+
+                </form>
+
+
+                <a
+                    href="artisan-profile.html"
+                    class="back-link">
+
+                    ← Back to Artisan Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <h2>
+                    Hidden<span>Gems</span>
+                </h2>
+
+                <p>
+                    Connecting communities with local
+                    artisans and traditional skills.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="artisans.html">
+                    Artisans
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Email: support@hiddengems.com
+                </p>
+
+                <p>
+                    Local Artisan Community Platform
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Hidden Gems – Local Artisans & Skills Platform
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        document
+        .getElementById("contactForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            document
+            .getElementById("successMessage")
+            .style.display = "block";
+
+            this.reset();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

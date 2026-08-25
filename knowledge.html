@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Knowledge Preservation | Hidden Gems</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .knowledge-page {
+            background: #fffaf5;
+            padding: 55px 20px 80px;
+        }
+
+        .knowledge-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .knowledge-header h1 {
+            color: #3d261b;
+            font-size: 40px;
+            margin: 10px 0;
+        }
+
+        .knowledge-header p {
+            color: #777;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .knowledge-form {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .info-box {
+            background: #fff3e8;
+            border-left: 5px solid #c56b32;
+            padding: 18px;
+            margin-bottom: 30px;
+            color: #664b3c;
+            line-height: 1.6;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            color: #3d261b;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ead8cb;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4b2e20;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c56b32;
+        }
+
+        .step-box {
+            background: #fffaf5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 18px;
+        }
+
+        .step-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #c56b32;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+        }
+
+        .step-heading h3 {
+            color: #4b2e20;
+        }
+
+        .media-box {
+            border: 2px dashed #d8b9a3;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            background: #fffaf5;
+        }
+
+        .media-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .media-box input {
+            margin-top: 12px;
+        }
+
+        .submit-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .save-btn {
+            background: #c56b32;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .save-btn:hover {
+            background: #9f4f22;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 14px 28px;
+            border: 1px solid #c56b32;
+            color: #c56b32;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        @media (max-width: 650px) {
+
+            .knowledge-form {
+                padding: 25px;
+            }
+
+            .knowledge-header h1 {
+                font-size: 30px;
+            }
+
+            .back-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Hidden<span>Gems</span>
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="artisans.html">
+                        Explore Artisans
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#categories">
+                        Categories
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">
+                        About Us
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="nav-buttons">
+
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- Knowledge Page -->
+
+    <section class="knowledge-page">
+
+
+        <div class="knowledge-header">
+
+            <p class="small-title">
+                PRESERVE TRADITIONAL KNOWLEDGE
+            </p>
+
+            <h1>
+                Knowledge Preservation
+            </h1>
+
+            <p>
+                Document your traditional skills and techniques
+                so that valuable community knowledge can be
+                preserved for future generations.
+            </p>
+
+        </div>
+
+
+
+        <div class="knowledge-form">
+
+
+            <!-- Information -->
+
+            <div class="info-box">
+
+                <strong>Why preserve traditional knowledge?</strong>
+
+                <br>
+
+                Traditional skills are often passed from one
+                generation to another. Documenting these
+                techniques helps protect valuable cultural
+                knowledge and makes it easier for future
+                generations to learn.
+
+            </div>
+
+
+
+            <form id="knowledgeForm">
+
+
+                <!-- Basic Information -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📖 Skill Information
+                    </h2>
+
+
+                    <div class="form-group">
+
+                        <label for="skillName">
+                            Skill / Craft Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="skillName"
+                            placeholder="Example: Traditional Pottery"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Category *
+                        </label>
+
+                        <select id="category" required>
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Handicrafts">
+                                Handicrafts
+                            </option>
+
+                            <option value="Pottery">
+                                Pottery
+                            </option>
+
+                            <option value="Painting">
+                                Painting
+                            </option>
+
+                            <option value="Textile">
+                                Textile
+                            </option>
+
+                            <option value="Woodwork">
+                                Woodwork
+                            </option>
+
+                            <option value="Jewellery">
+                                Jewellery
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="history">
+                            History / Background
+                        </label>
+
+                        <textarea
+                            id="history"
+                            placeholder="Tell us about the history and origin of this traditional skill..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Steps -->
+
+                <div class="form-section">
+
+                    <h2>
+                        🛠️ Step-by-Step Technique
+                    </h2>
+
+
+                    <!-- Step 1 -->
+
+                    <div class="step-box">
+
+                        <div class="step-heading">
+
+                            <div class="step-number">
+                                1
+                            </div>
+
+                            <h3>
+                                Materials Required
+                            </h3>
+
+                        </div>
+
+                        <textarea
+                            id="step1"
+                            placeholder="Describe the materials, tools or ingredients required..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- Step 2 -->
+
+                    <div class="step-box">
+
+                        <div class="step-heading">
+
+                            <div class="step-number">
+                                2
+                            </div>
+
+                            <h3>
+                                Preparation
+                            </h3>
+
+                        </div>
+
+                        <textarea
+                            id="step2"
+                            placeholder="Explain how the materials are prepared..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- Step 3 -->
+
+                    <div class="step-box">
+
+                        <div class="step-heading">
+
+                            <div class="step-number">
+                                3
+                            </div>
+
+                            <h3>
+                                Main Technique
+                            </h3>
+
+                        </div>
+
+                        <textarea
+                            id="step3"
+                            placeholder="Explain the main craft-making technique step by step..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- Step 4 -->
+
+                    <div class="step-box">
+
+                        <div class="step-heading">
+
+                            <div class="step-number">
+                                4
+                            </div>
+
+                            <h3>
+                                Finishing
+                            </h3>
+
+                        </div>
+
+                        <textarea
+                            id="step4"
+                            placeholder="Explain the final finishing and preparation..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Media -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📷 Photos & Videos
+                    </h2>
+
+
+                    <div class="media-box">
+
+                        <div class="media-icon">
+                            📸
+                        </div>
+
+                        <p>
+                            Upload photos or a video showing
+                            the traditional craft process.
+                        </p>
+
+                        <input
+                            type="file"
+                            id="media"
+                            accept="image/*,video/*"
+                            multiple
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Additional Information -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📝 Additional Information
+                    </h2>
+
+
+                    <div class="form-group">
+
+                        <label for="tips">
+                            Traditional Tips / Special Techniques
+                        </label>
+
+                        <textarea
+                            id="tips"
+                            placeholder="Share special tips, methods or knowledge that should be preserved..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="teacher">
+                            Source of Knowledge
+                        </label>
+
+                        <input
+                            type="text"
+                            id="teacher"
+                            placeholder="Example: Learned from my grandmother"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Submit -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        📚 Save Knowledge
+
+                    </button>
+
+
+                    <a
+                        href="artisan-profile.html"
+                        class="back-btn">
+
+                        Back to Profile
+
+                    </a>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <h2>
+                    Hidden<span>Gems</span>
+                </h2>
+
+                <p>
+                    Connecting communities with local
+                    artisans and traditional skills.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="artisans.html">
+                    Artisans
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Email: support@hiddengems.com
+                </p>
+
+                <p>
+                    Local Artisan Community Platform
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Hidden Gems – Local Artisans & Skills Platform
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        document
+        .getElementById("knowledgeForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Traditional knowledge has been saved successfully!"
+            );
+
+            this.reset();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

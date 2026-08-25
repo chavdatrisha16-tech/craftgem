@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Artisan Profile | Hidden Gems</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .form-page {
+            background: #fffaf5;
+            padding: 50px 20px 80px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-header h1 {
+            color: #3d261b;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #777;
+        }
+
+        .artisan-form {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .form-section {
+            margin-bottom: 35px;
+        }
+
+        .form-section h2 {
+            color: #3d261b;
+            font-size: 23px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ead8cb;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4b2e20;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c56b32;
+        }
+
+        .form-note {
+            color: #888;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .photo-box {
+            border: 2px dashed #d8b9a3;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #fffaf5;
+        }
+
+        .photo-box .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .photo-box input {
+            margin-top: 15px;
+        }
+
+        .process-box {
+            background: #fffaf5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .process-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .process-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #c56b32;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+        }
+
+        .submit-area {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .submit-btn {
+            background: #c56b32;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #9f4f22;
+        }
+
+        .cancel-btn {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 14px 30px;
+            border: 1px solid #c56b32;
+            color: #c56b32;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .verification-note {
+            background: #fff3e8;
+            border-left: 4px solid #c56b32;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: #664b3c;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+
+            .artisan-form {
+                padding: 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-header h1 {
+                font-size: 30px;
+            }
+
+            .cancel-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Hidden<span>Gems</span>
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="artisans.html">
+                        Explore Artisans
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#categories">
+                        Categories
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">
+                        About Us
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="nav-buttons">
+
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- Form Page -->
+
+    <section class="form-page">
+
+
+        <div class="form-header">
+
+            <p class="small-title">
+                ARTISAN PROFILE
+            </p>
+
+            <h1>
+                Create Your Artisan Profile
+            </h1>
+
+            <p>
+                Share your skills, products and traditional
+                craft with the community.
+            </p>
+
+        </div>
+
+
+
+        <div class="artisan-form">
+
+
+            <!-- Verification Notice -->
+
+            <div class="verification-note">
+
+                <strong>Important:</strong>
+
+                Your profile will be reviewed by the
+                administrator before it becomes a
+                <strong>Verified Artisan Profile</strong>.
+
+            </div>
+
+
+
+            <form id="artisanForm">
+
+
+                <!-- Basic Information -->
+
+                <div class="form-section">
+
+                    <h2>
+                        👤 Basic Information
+                    </h2>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="artisanName">
+                                Full Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="artisanName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Contact Number *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Enter contact number"
+                                maxlength="10"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="location">
+                                Location *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                placeholder="City / Area"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="experience">
+                                Experience *
+                            </label>
+
+                            <select
+                                id="experience"
+                                required
+                            >
+
+                                <option value="">
+                                    Select experience
+                                </option>
+
+                                <option value="0-2">
+                                    0 - 2 Years
+                                </option>
+
+                                <option value="3-5">
+                                    3 - 5 Years
+                                </option>
+
+                                <option value="6-10">
+                                    6 - 10 Years
+                                </option>
+
+                                <option value="10+">
+                                    More than 10 Years
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Skill Information -->
+
+                <div class="form-section">
+
+                    <h2>
+                        🎨 Skill & Category
+                    </h2>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="category">
+                                Craft Category *
+                            </label>
+
+                            <select
+                                id="category"
+                                required
+                            >
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option value="Handicrafts">
+                                    Handicrafts
+                                </option>
+
+                                <option value="Pottery">
+                                    Pottery
+                                </option>
+
+                                <option value="Painting">
+                                    Painting
+                                </option>
+
+                                <option value="Textile">
+                                    Textile
+                                </option>
+
+                                <option value="Woodwork">
+                                    Woodwork
+                                </option>
+
+                                <option value="Jewellery">
+                                    Jewellery
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="skill">
+                                Main Skill *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="skill"
+                                placeholder="Example: Traditional Pottery"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="aboutCraft">
+                            About Your Craft *
+                        </label>
+
+                        <textarea
+                            id="aboutCraft"
+                            placeholder="Tell us about your craft, techniques and experience..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Profile Photo -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📷 Profile Photo
+                    </h2>
+
+
+                    <div class="photo-box">
+
+                        <div class="icon">
+                            👤
+                        </div>
+
+                        <p>
+                            Upload a clear photo for your
+                            artisan profile.
+                        </p>
+
+                        <input
+                            type="file"
+                            id="profilePhoto"
+                            accept="image/*"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Products -->
+
+                <div class="form-section">
+
+                    <h2>
+                        🛍️ Products & Work
+                    </h2>
+
+
+                    <div class="form-group">
+
+                        <label for="products">
+                            Products You Create
+                        </label>
+
+                        <textarea
+                            id="products"
+                            placeholder="Example: Handmade baskets, decorative crafts, traditional toys..."
+                        ></textarea>
+
+                        <p class="form-note">
+                            Mention the handmade products you create.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Craft Process -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📚 Craft-Making Process
+                    </h2>
+
+
+                    <div class="process-box">
+
+                        <div class="process-title">
+
+                            <div class="process-number">
+                                1
+                            </div>
+
+                            <strong>
+                                Step 1 - Materials
+                            </strong>
+
+                        </div>
+
+                        <textarea
+                            id="step1"
+                            placeholder="Describe the materials you use..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="process-box">
+
+                        <div class="process-title">
+
+                            <div class="process-number">
+                                2
+                            </div>
+
+                            <strong>
+                                Step 2 - Preparation
+                            </strong>
+
+                        </div>
+
+                        <textarea
+                            id="step2"
+                            placeholder="Describe how you prepare the materials..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="process-box">
+
+                        <div class="process-title">
+
+                            <div class="process-number">
+                                3
+                            </div>
+
+                            <strong>
+                                Step 3 - Creation
+                            </strong>
+
+                        </div>
+
+                        <textarea
+                            id="step3"
+                            placeholder="Describe the actual craft-making process..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="process-box">
+
+                        <div class="process-title">
+
+                            <div class="process-number">
+                                4
+                            </div>
+
+                            <strong>
+                                Step 4 - Finishing
+                            </strong>
+
+                        </div>
+
+                        <textarea
+                            id="step4"
+                            placeholder="Describe the final finishing process..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Submit -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        Submit Artisan Profile
+
+                    </button>
+
+
+                    <a
+                        href="artisans.html"
+                        class="cancel-btn">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <h2>
+                    Hidden<span>Gems</span>
+                </h2>
+
+                <p>
+                    Connecting communities with local
+                    artisans and traditional skills.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="artisans.html">
+                    Artisans
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Email: support@hiddengems.com
+                </p>
+
+                <p>
+                    Local Artisan Community Platform
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Hidden Gems – Local Artisans & Skills Platform
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        document
+        .getElementById("artisanForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Your artisan profile has been submitted successfully! It will be reviewed by the administrator."
+            );
+
+            this.reset();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
