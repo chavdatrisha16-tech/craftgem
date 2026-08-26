@@ -1,8 +1,7 @@
 const SUPABASE_URL = "https://tsgrrnivmaujjteavgkf.supabase.co";
 const SUPABASE_KEY = "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 function openCategory(category) {
     alert("You selected: " + category);
 
@@ -15,4 +14,4 @@ function openCategory(category) {
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Hidden Gems website loaded successfully!");
 });
-console.log("Supabase connected:", supabase);
+console.log("Supabase connected:", window.supabaseClient);
