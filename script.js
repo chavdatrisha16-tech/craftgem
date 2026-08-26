@@ -1,5 +1,8 @@
 const SUPABASE_URL = "https://tsgrrnivmaujjteavgkf.supabase.co";
 const SUPABASE_KEY = "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 function openCategory(category) {
     alert("You selected: " + category);
 
