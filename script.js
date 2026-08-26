@@ -1,3 +1,5 @@
+const SUPABASE_URL = "https://tsgrrnivmaujjteavgkf.supabase.co";
+const SUPABASE_KEY = "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
 function openCategory(category) {
     alert("You selected: " + category);
 
