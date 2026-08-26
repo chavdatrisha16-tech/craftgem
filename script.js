@@ -15,3 +15,4 @@ function openCategory(category) {
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Hidden Gems website loaded successfully!");
 });
+console.log("Supabase connected:", supabase);
