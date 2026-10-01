@@ -111,6 +111,7 @@
             text-align: center;
             margin-top: 15px;
             font-size: 14px;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -144,7 +145,6 @@
         <p class="subtitle">
             Join the Hidden Gems community
         </p>
-
 
         <form id="registerForm">
 
@@ -180,6 +180,8 @@
                     id="phone"
                     placeholder="Enter your phone number"
                     maxlength="10"
+                    minlength="10"
+                    inputmode="numeric"
                     required
                 >
             </div>
@@ -225,6 +227,7 @@
                     type="password"
                     id="password"
                     placeholder="Create a password"
+                    minlength="6"
                     required
                 >
             </div>
@@ -239,6 +242,7 @@
                     type="password"
                     id="confirmPassword"
                     placeholder="Confirm your password"
+                    minlength="6"
                     required
                 >
             </div>
@@ -282,26 +286,36 @@
 </div>
 
 
-<!-- Supabase + Registration -->
-<script type="module">
+<!-- ===================================================== -->
+<!-- SUPABASE -->
+<!-- ===================================================== -->
 
-    import { createClient }
-        from "https://esm.sh/@supabase/supabase-js@2";
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
+<script>
+
+    // =====================================================
+    // SUPABASE CONFIG
+    // =====================================================
 
     const SUPABASE_URL =
-        "https://tsgrrnivmaujjteavgkf.supabase.co";
+        "https://qxzxzuyrzuqwgdunzlek.supabase.co";
 
-    const SUPABASE_KEY =
-        "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+    const SUPABASE_PUBLISHABLE_KEY =
+        "YOUR_PUBLISHABLE_KEY_HERE";
 
 
     const supabaseClient =
-        createClient(SUPABASE_URL, SUPABASE_KEY);
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
 
 
-    console.log("Supabase connected successfully");
-
+    // =====================================================
+    // FORM ELEMENTS
+    // =====================================================
 
     const form =
         document.getElementById("registerForm");
@@ -313,43 +327,78 @@
         document.getElementById("registerButton");
 
 
+    // =====================================================
+    // SHOW MESSAGE
+    // =====================================================
+
+    function showMessage(text, color) {
+
+        message.textContent = text;
+        message.style.color = color;
+
+    }
+
+
+    // =====================================================
+    // REGISTER
+    // =====================================================
+
     form.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
 
+        // -------------------------------------------------
+        // GET VALUES
+        // -------------------------------------------------
+
         const name =
-            document.getElementById("name").value.trim();
+            document.getElementById("name")
+                .value
+                .trim();
 
         const email =
-            document.getElementById("email").value.trim();
+            document.getElementById("email")
+                .value
+                .trim()
+                .toLowerCase();
 
         const phone =
-            document.getElementById("phone").value.trim();
+            document.getElementById("phone")
+                .value
+                .trim();
 
         const location =
-            document.getElementById("location").value.trim();
+            document.getElementById("location")
+                .value
+                .trim();
 
         const role =
-            document.getElementById("role").value;
+            document.getElementById("role")
+                .value;
 
         const password =
-            document.getElementById("password").value;
+            document.getElementById("password")
+                .value;
 
         const confirmPassword =
-            document.getElementById("confirmPassword").value;
+            document.getElementById("confirmPassword")
+                .value;
 
 
-        message.textContent = "";
-        message.style.color = "";
+        showMessage("", "");
 
+
+        // -------------------------------------------------
+        // VALIDATION
+        // -------------------------------------------------
 
         if (password !== confirmPassword) {
 
-            message.textContent =
-                "Passwords do not match.";
-
-            message.style.color = "red";
+            showMessage(
+                "Passwords do not match.",
+                "red"
+            );
 
             return;
         }
@@ -357,14 +406,40 @@
 
         if (password.length < 6) {
 
-            message.textContent =
-                "Password must be at least 6 characters.";
-
-            message.style.color = "red";
+            showMessage(
+                "Password must be at least 6 characters.",
+                "red"
+            );
 
             return;
         }
 
+
+        if (!/^\d{10}$/.test(phone)) {
+
+            showMessage(
+                "Please enter a valid 10-digit phone number.",
+                "red"
+            );
+
+            return;
+        }
+
+
+        if (!role) {
+
+            showMessage(
+                "Please select User or Artisan.",
+                "red"
+            );
+
+            return;
+        }
+
+
+        // -------------------------------------------------
+        // DISABLE BUTTON
+        // -------------------------------------------------
 
         button.disabled = true;
         button.textContent = "Creating Account...";
@@ -372,10 +447,15 @@
 
         try {
 
+            // =================================================
+            // CREATE SUPABASE AUTH USER
+            // =================================================
+
             const { data, error } =
                 await supabaseClient.auth.signUp({
 
                     email: email,
+
                     password: password,
 
                     options: {
@@ -383,7 +463,7 @@
                             full_name: name,
                             phone: phone,
                             location: location,
-                            role: role
+                            user_type: role
                         }
                     }
 
@@ -395,27 +475,140 @@
             }
 
 
-            console.log("User created:", data.user);
+            // =================================================
+            // CHECK AUTH USER
+            // =================================================
+
+            const user = data.user;
 
 
-            message.textContent =
-                "Account created successfully!";
+            if (!user) {
 
-            message.style.color = "green";
+                throw new Error(
+                    "Account could not be created."
+                );
+
+            }
+
+
+            console.log(
+                "Supabase Auth User:",
+                user
+            );
+
+
+            // =================================================
+            // CREATE PROFILE
+            // =================================================
+
+            const { error: profileError } =
+                await supabaseClient
+                    .from("profiles")
+                    .insert({
+
+                        id: user.id,
+
+                        full_name: name,
+
+                        email: email,
+
+                        phone: phone,
+
+                        location: location,
+
+                        user_type: role
+
+                    });
+
+
+            if (profileError) {
+
+                console.error(
+                    "Profile Error:",
+                    profileError
+                );
+
+                throw new Error(
+                    "Account created, but profile could not be saved. " +
+                    profileError.message
+                );
+
+            }
+
+
+            // =================================================
+            // ARTISAN PROFILE
+            // =================================================
+
+            if (role === "artisan") {
+
+                const { error: artisanError } =
+                    await supabaseClient
+                        .from("artisans")
+                        .insert({
+
+                            user_id: user.id,
+
+                            artisan_name: name,
+
+                            location: location
+
+                        });
+
+
+                if (artisanError) {
+
+                    console.error(
+                        "Artisan Error:",
+                        artisanError
+                    );
+
+                    throw new Error(
+                        "Account created, but artisan profile could not be created. " +
+                        artisanError.message
+                    );
+
+                }
+
+            }
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            showMessage(
+                "Account created successfully! Redirecting to login...",
+                "green"
+            );
 
 
             form.reset();
 
 
+            // If email confirmation is required,
+            // Supabase may return a user without session.
+            // In that case user must verify their email first.
+
+            setTimeout(function() {
+
+                window.location.href = "login.html";
+
+            }, 1800);
+
+
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                "Registration Error:",
+                error
+            );
 
-            message.textContent =
-                error.message || "Registration failed.";
 
-            message.style.color = "red";
-
+            showMessage(
+                error.message || "Registration failed.",
+                "red"
+            );
 
         } finally {
 
