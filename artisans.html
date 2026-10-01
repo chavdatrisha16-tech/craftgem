@@ -22,8 +22,8 @@
         /* ================= NAVBAR ================= */
 
         .navbar {
-            background: #fff;
-            border-bottom: 1px solid #eee;
+            background: #ffffff;
+            border-bottom: 1px solid #eeeeee;
             padding: 18px 0;
         }
 
@@ -31,27 +31,27 @@
             width: 90%;
             max-width: 1200px;
             margin: auto;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 25px;
         }
 
         .logo {
             text-decoration: none;
+            color: #333;
             font-size: 24px;
             font-weight: 700;
-            color: #333;
-        }
-
-        .logo::first-letter {
-            color: #e87535;
+            white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             justify-content: center;
+
             gap: 28px;
             flex: 1;
         }
@@ -66,43 +66,48 @@
             color: #e87535;
         }
 
-        /* IMPORTANT:
-           script.js fills this automatically */
+        /*
+            IMPORTANT:
+            Login/Register are NOT written here.
+
+            script.js automatically fills this
+            according to login status.
+        */
+
         .nav-buttons {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        /* ================= BUTTONS ================= */
-
         .login-btn,
         .register-btn,
         .dashboard-btn,
         .logout-btn {
-            text-decoration: none;
             padding: 10px 18px;
             border-radius: 7px;
             font-size: 14px;
+            text-decoration: none;
             cursor: pointer;
-            border: 1px solid #e87535;
         }
 
         .login-btn {
+            border: 1px solid #e87535;
             color: #e87535;
-            background: white;
+            background: #ffffff;
         }
 
         .register-btn,
         .dashboard-btn {
-            color: white;
+            border: 1px solid #e87535;
             background: #e87535;
+            color: #ffffff;
         }
 
         .logout-btn {
-            color: white;
+            border: 1px solid #555;
             background: #555;
-            border-color: #555;
+            color: #ffffff;
         }
 
         .welcome-text {
@@ -110,6 +115,7 @@
             font-size: 14px;
             white-space: nowrap;
         }
+
 
         /* ================= HERO ================= */
 
@@ -121,46 +127,67 @@
             );
 
             text-align: center;
-            padding: 55px 20px;
+            padding: 60px 20px;
         }
 
         .hero h1 {
             font-size: 40px;
-            margin-bottom: 12px;
             color: #444;
+            margin-bottom: 12px;
         }
 
         .hero p {
             color: #777;
             font-size: 15px;
+            line-height: 1.6;
         }
+
 
         /* ================= SEARCH ================= */
 
         .search-section {
             width: 90%;
             max-width: 1100px;
+
             margin: 35px auto;
-            background: white;
+
+            background: #ffffff;
+
             padding: 22px;
+
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .search-box {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr auto;
+
+            grid-template-columns:
+                1.5fr
+                1fr
+                1fr
+                auto;
+
             gap: 12px;
         }
 
         .search-box input,
         .search-box select {
             width: 100%;
+
             padding: 13px;
-            border: 1px solid #ddd;
+
+            border: 1px solid #dddddd;
+
             border-radius: 6px;
+
             outline: none;
+
             font-size: 14px;
+
+            background: #ffffff;
         }
 
         .search-box input:focus,
@@ -170,11 +197,17 @@
 
         .search-btn {
             border: none;
+
             padding: 13px 25px;
+
             border-radius: 6px;
+
             background: #e87535;
-            color: white;
+
+            color: #ffffff;
+
             cursor: pointer;
+
             font-weight: 600;
         }
 
@@ -182,46 +215,70 @@
             background: #d96427;
         }
 
+
         /* ================= CONTENT ================= */
 
         .content {
             width: 90%;
             max-width: 1100px;
+
             margin: 45px auto 80px;
         }
 
         .section-title {
             font-size: 22px;
+
             margin-bottom: 25px;
+
             color: #444;
         }
+
 
         /* ================= ARTISAN GRID ================= */
 
         .artisan-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 25px;
         }
 
+
+        /* ================= ARTISAN CARD ================= */
+
         .artisan-card {
-            background: white;
+            background: #ffffff;
+
             border-radius: 10px;
+
             overflow: hidden;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+
+            box-shadow:
+                0 4px 18px rgba(0, 0, 0, 0.06);
+
             transition: 0.2s ease;
         }
 
         .artisan-card:hover {
             transform: translateY(-4px);
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.09);
         }
 
         .artisan-image {
-            height: 155px;
+            height: 160px;
+
             background: #f4dfb4;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             font-size: 58px;
         }
 
@@ -231,44 +288,63 @@
 
         .verified {
             display: inline-block;
+
             color: #39834b;
+
             font-size: 12px;
+
             margin-bottom: 10px;
         }
 
         .artisan-info h3 {
             font-size: 19px;
+
             margin-bottom: 7px;
         }
 
         .craft {
             color: #e87535;
+
             font-size: 14px;
+
             margin-bottom: 8px;
+
             font-weight: 600;
         }
 
         .location {
             color: #777;
+
             font-size: 13px;
+
             margin-bottom: 12px;
         }
 
         .description {
             color: #777;
+
             font-size: 13px;
+
             line-height: 1.6;
+
             min-height: 42px;
+
             margin-bottom: 18px;
         }
 
         .profile-btn {
             display: inline-block;
+
             text-decoration: none;
+
             background: #e87535;
-            color: white;
+
+            color: #ffffff;
+
             padding: 10px 16px;
+
             border-radius: 6px;
+
             font-size: 13px;
         }
 
@@ -276,15 +352,38 @@
             background: #d96427;
         }
 
+
+        /* ================= NO RESULTS ================= */
+
+        #noResults {
+            display: none;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            color: #777;
+
+            background: #ffffff;
+
+            border-radius: 10px;
+        }
+
+
         /* ================= FOOTER ================= */
 
         footer {
             background: #302c30;
-            color: white;
+
+            color: #ffffff;
+
             text-align: center;
+
             padding: 30px 20px;
+
             font-size: 13px;
         }
+
 
         /* ================= MOBILE ================= */
 
@@ -296,8 +395,11 @@
 
             .nav-links {
                 order: 3;
+
                 width: 100%;
+
                 flex-wrap: wrap;
+
                 gap: 15px;
             }
 
@@ -306,9 +408,11 @@
             }
 
             .artisan-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
         }
+
 
         @media (max-width: 600px) {
 
@@ -322,23 +426,36 @@
 
             .nav-buttons {
                 width: 100%;
+
                 justify-content: center;
+            }
+
+            .welcome-text {
+                font-size: 13px;
             }
         }
     </style>
 </head>
 
+
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+
+    <!-- ==================================================
+         NAVBAR
+         ================================================== -->
 
     <nav class="navbar">
 
         <div class="nav-container">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+            >
                 HiddenGems
             </a>
+
 
             <div class="nav-links">
 
@@ -360,12 +477,11 @@
 
             </div>
 
-            <!--
-                IMPORTANT:
-                DO NOT PUT LOGIN OR REGISTER HERE.
 
-                script.js automatically changes this
-                depending on whether the user is logged in.
+            <!--
+                DO NOT ADD LOGIN/REGISTER HERE.
+
+                script.js handles this automatically.
             -->
 
             <div class="nav-buttons"></div>
@@ -375,7 +491,9 @@
     </nav>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ==================================================
+         HERO
+         ================================================== -->
 
     <section class="hero">
 
@@ -384,23 +502,28 @@
         </h1>
 
         <p>
-            Discover talented artisans and traditional skills from your community.
+            Discover talented artisans and traditional
+            skills from your community.
         </p>
 
     </section>
 
 
-    <!-- ================= SEARCH ================= -->
+    <!-- ==================================================
+         SEARCH
+         ================================================== -->
 
     <section class="search-section">
 
         <div class="search-box">
+
 
             <input
                 type="text"
                 id="artisanSearch"
                 placeholder="Search artisan or skill..."
             >
+
 
             <select id="categoryFilter">
 
@@ -434,13 +557,16 @@
 
             </select>
 
+
             <input
                 type="text"
                 id="locationFilter"
                 placeholder="Location"
             >
 
+
             <button
+                type="button"
                 class="search-btn"
                 onclick="searchArtisans()"
             >
@@ -452,7 +578,9 @@
     </section>
 
 
-    <!-- ================= ARTISANS ================= -->
+    <!-- ==================================================
+         ARTISAN CONTENT
+         ================================================== -->
 
     <main class="content">
 
@@ -461,10 +589,15 @@
         </h2>
 
 
-        <div class="artisan-grid" id="artisanGrid">
+        <div
+            class="artisan-grid"
+            id="artisanGrid"
+        >
 
 
-            <!-- ARTISAN 1 -->
+            <!-- ==================================================
+                 ARTISAN 1
+                 ================================================== -->
 
             <div
                 class="artisan-card"
@@ -478,28 +611,34 @@
                     🏺
                 </div>
 
+
                 <div class="artisan-info">
 
                     <span class="verified">
                         ✓ Verified Artisan
                     </span>
 
+
                     <h3>
                         Ramesh Kumar
                     </h3>
+
 
                     <div class="craft">
                         Traditional Clay Potter
                     </div>
 
+
                     <div class="location">
                         📍 Mumbai, Maharashtra
                     </div>
 
+
                     <p class="description">
-                        Skilled in traditional clay pottery and handmade
-                        ceramic products.
+                        Skilled in traditional clay pottery
+                        and handmade ceramic products.
                     </p>
+
 
                     <a
                         href="artisan-profile.html"
@@ -513,7 +652,9 @@
             </div>
 
 
-            <!-- ARTISAN 2 -->
+            <!-- ==================================================
+                 ARTISAN 2
+                 ================================================== -->
 
             <div
                 class="artisan-card"
@@ -527,28 +668,34 @@
                     🎨
                 </div>
 
+
                 <div class="artisan-info">
 
                     <span class="verified">
                         ✓ Verified Artisan
                     </span>
 
+
                     <h3>
                         Asha Patil
                     </h3>
+
 
                     <div class="craft">
                         Traditional Painter
                     </div>
 
+
                     <div class="location">
                         📍 Nashik, Maharashtra
                     </div>
 
+
                     <p class="description">
-                        Local traditional paintings and cultural
-                        artwork.
+                        Local traditional paintings
+                        and cultural artwork.
                     </p>
+
 
                     <a
                         href="artisan-profile.html"
@@ -562,7 +709,9 @@
             </div>
 
 
-            <!-- ARTISAN 3 -->
+            <!-- ==================================================
+                 ARTISAN 3
+                 ================================================== -->
 
             <div
                 class="artisan-card"
@@ -576,28 +725,34 @@
                     🧶
                 </div>
 
+
                 <div class="artisan-info">
 
                     <span class="verified">
                         ✓ Verified Artisan
                     </span>
 
+
                     <h3>
                         Meena Sharma
                     </h3>
+
 
                     <div class="craft">
                         Handicraft Artist
                     </div>
 
+
                     <div class="location">
                         📍 Mumbai, Maharashtra
                     </div>
 
+
                     <p class="description">
-                        Creates traditional handmade crafts using
-                        local techniques.
+                        Creates traditional handmade crafts
+                        using local techniques.
                     </p>
+
 
                     <a
                         href="artisan-profile.html"
@@ -613,10 +768,27 @@
 
         </div>
 
+
+        <!-- NO RESULTS -->
+
+        <div id="noResults">
+
+            <h3>
+                No artisans found
+            </h3>
+
+            <p>
+                Try changing your search or filter.
+            </p>
+
+        </div>
+
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ==================================================
+         FOOTER
+         ================================================== -->
 
     <footer>
 
@@ -627,106 +799,304 @@
     </footer>
 
 
-    <!-- ================= SEARCH SCRIPT ================= -->
+    <!-- ==================================================
+         SUPABASE
+         ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- ==================================================
+         MAIN SCRIPT
+         ================================================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- ==================================================
+         ARTISANS PAGE LOGIN GUARD
+         ================================================== -->
 
     <script>
 
+        document.addEventListener(
+            "DOMContentLoaded",
+            async function () {
+
+
+                const {
+                    data: {
+                        session
+                    }
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                /*
+                 * If user is NOT logged in,
+                 * send them to login page.
+                 */
+
+                if (!session) {
+
+                    sessionStorage.setItem(
+                        "craftgem_redirect_after_login",
+                        "artisans.html"
+                    );
+
+
+                    alert(
+                        "Login to continue"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                    return;
+                }
+
+
+                /*
+                 * User is logged in.
+                 * Continue normally.
+                 */
+
+                applySelectedCategory();
+
+            }
+        );
+
+
+        // ==================================================
+        // SEARCH
+        // ==================================================
+
         function searchArtisans() {
+
 
             const search =
                 document
-                    .getElementById("artisanSearch")
+                    .getElementById(
+                        "artisanSearch"
+                    )
                     .value
                     .toLowerCase()
                     .trim();
+
 
             const category =
                 document
-                    .getElementById("categoryFilter")
+                    .getElementById(
+                        "categoryFilter"
+                    )
                     .value
                     .toLowerCase()
                     .trim();
 
+
             const location =
                 document
-                    .getElementById("locationFilter")
+                    .getElementById(
+                        "locationFilter"
+                    )
                     .value
                     .toLowerCase()
                     .trim();
 
 
             const cards =
-                document.querySelectorAll(".artisan-card");
+                document.querySelectorAll(
+                    ".artisan-card"
+                );
 
 
-            cards.forEach(card => {
-
-                const name =
-                    card.dataset.name.toLowerCase();
-
-                const skill =
-                    card.dataset.skill.toLowerCase();
-
-                const cardCategory =
-                    card.dataset.category.toLowerCase();
-
-                const cardLocation =
-                    card.dataset.location.toLowerCase();
+            let visibleCount = 0;
 
 
-                const matchesSearch =
-                    !search ||
-                    name.includes(search) ||
-                    skill.includes(search);
-
-                const matchesCategory =
-                    !category ||
-                    cardCategory === category;
-
-                const matchesLocation =
-                    !location ||
-                    cardLocation.includes(location);
+            cards.forEach(
+                function (card) {
 
 
-                if (
-                    matchesSearch &&
-                    matchesCategory &&
-                    matchesLocation
-                ) {
+                    const name =
+                        card.dataset.name
+                            .toLowerCase();
 
-                    card.style.display = "";
 
-                } else {
+                    const skill =
+                        card.dataset.skill
+                            .toLowerCase();
 
-                    card.style.display = "none";
+
+                    const cardCategory =
+                        card.dataset.category
+                            .toLowerCase();
+
+
+                    const cardLocation =
+                        card.dataset.location
+                            .toLowerCase();
+
+
+                    const matchesSearch =
+                        !search ||
+                        name.includes(search) ||
+                        skill.includes(search);
+
+
+                    const matchesCategory =
+                        !category ||
+                        cardCategory === category;
+
+
+                    const matchesLocation =
+                        !location ||
+                        cardLocation.includes(
+                            location
+                        );
+
+
+                    if (
+                        matchesSearch &&
+                        matchesCategory &&
+                        matchesLocation
+                    ) {
+
+                        card.style.display =
+                            "";
+
+                        visibleCount++;
+
+                    } else {
+
+                        card.style.display =
+                            "none";
+
+                    }
 
                 }
+            );
 
-            });
+
+            const noResults =
+                document.getElementById(
+                    "noResults"
+                );
+
+
+            if (visibleCount === 0) {
+
+                noResults.style.display =
+                    "block";
+
+            } else {
+
+                noResults.style.display =
+                    "none";
+
+            }
 
         }
 
 
-        document
-            .getElementById("artisanSearch")
-            .addEventListener("keyup", searchArtisans);
-
-
-        document
-            .getElementById("locationFilter")
-            .addEventListener("keyup", searchArtisans);
-
+        // ==================================================
+        // LIVE SEARCH
+        // ==================================================
 
         document
-            .getElementById("categoryFilter")
-            .addEventListener("change", searchArtisans);
+            .getElementById(
+                "artisanSearch"
+            )
+            .addEventListener(
+                "keyup",
+                searchArtisans
+            );
+
+
+        document
+            .getElementById(
+                "locationFilter"
+            )
+            .addEventListener(
+                "keyup",
+                searchArtisans
+            );
+
+
+        document
+            .getElementById(
+                "categoryFilter"
+            )
+            .addEventListener(
+                "change",
+                searchArtisans
+            );
+
+
+        // ==================================================
+        // APPLY CATEGORY FROM HOME PAGE
+        // ==================================================
+
+        function applySelectedCategory() {
+
+
+            const selectedCategory =
+                sessionStorage.getItem(
+                    "craftgem_selected_category"
+                );
+
+
+            if (!selectedCategory) {
+                return;
+            }
+
+
+            const categoryFilter =
+                document.getElementById(
+                    "categoryFilter"
+                );
+
+
+            const options =
+                Array.from(
+                    categoryFilter.options
+                );
+
+
+            const matchingOption =
+                options.find(
+                    option =>
+                        option.value.toLowerCase() ===
+                        selectedCategory.toLowerCase()
+                );
+
+
+            if (matchingOption) {
+
+                categoryFilter.value =
+                    matchingOption.value;
+
+                searchArtisans();
+
+            }
+
+
+            /*
+             * Remove it after applying.
+             * This prevents the same filter
+             * from staying forever.
+             */
+
+            sessionStorage.removeItem(
+                "craftgem_selected_category"
+            );
+
+        }
 
     </script>
-
-
-    <!-- IMPORTANT: Load this LAST -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
 
 </body>
 </html>
