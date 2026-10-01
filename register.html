@@ -296,14 +296,14 @@
 <script>
 
     // =====================================================
-    // SUPABASE CONFIG
+    // SUPABASE CONFIGURATION
     // =====================================================
 
     const SUPABASE_URL =
         "https://qxzxzuyrzuqwgdunzlek.supabase.co";
 
     const SUPABASE_PUBLISHABLE_KEY =
-        "YOUR_PUBLISHABLE_KEY_HERE";
+        "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
 
 
     const supabaseClient =
@@ -311,6 +311,9 @@
             SUPABASE_URL,
             SUPABASE_PUBLISHABLE_KEY
         );
+
+
+    console.log("CraftGem Supabase connected successfully");
 
 
     // =====================================================
@@ -328,7 +331,7 @@
 
 
     // =====================================================
-    // SHOW MESSAGE
+    // MESSAGE FUNCTION
     // =====================================================
 
     function showMessage(text, color) {
@@ -340,7 +343,7 @@
 
 
     // =====================================================
-    // REGISTER
+    // REGISTER FORM
     // =====================================================
 
     form.addEventListener("submit", async function(event) {
@@ -349,7 +352,7 @@
 
 
         // -------------------------------------------------
-        // GET VALUES
+        // GET FORM VALUES
         // -------------------------------------------------
 
         const name =
@@ -389,9 +392,9 @@
         showMessage("", "");
 
 
-        // -------------------------------------------------
+        // =================================================
         // VALIDATION
-        // -------------------------------------------------
+        // =================================================
 
         if (password !== confirmPassword) {
 
@@ -437,18 +440,20 @@
         }
 
 
-        // -------------------------------------------------
+        // =================================================
         // DISABLE BUTTON
-        // -------------------------------------------------
+        // =================================================
 
         button.disabled = true;
-        button.textContent = "Creating Account...";
+
+        button.textContent =
+            "Creating Account...";
 
 
         try {
 
             // =================================================
-            // CREATE SUPABASE AUTH USER
+            // CREATE AUTH ACCOUNT
             // =================================================
 
             const { data, error } =
@@ -459,25 +464,30 @@
                     password: password,
 
                     options: {
+
                         data: {
+
                             full_name: name,
+
                             phone: phone,
+
                             location: location,
+
                             user_type: role
+
                         }
+
                     }
 
                 });
 
 
             if (error) {
+
                 throw error;
+
             }
 
-
-            // =================================================
-            // CHECK AUTH USER
-            // =================================================
 
             const user = data.user;
 
@@ -492,8 +502,8 @@
 
 
             console.log(
-                "Supabase Auth User:",
-                user
+                "Auth user created:",
+                user.id
             );
 
 
@@ -529,7 +539,7 @@
                 );
 
                 throw new Error(
-                    "Account created, but profile could not be saved. " +
+                    "Account was created but profile could not be saved. " +
                     profileError.message
                 );
 
@@ -537,7 +547,7 @@
 
 
             // =================================================
-            // ARTISAN PROFILE
+            // CREATE ARTISAN PROFILE
             // =================================================
 
             if (role === "artisan") {
@@ -564,7 +574,7 @@
                     );
 
                     throw new Error(
-                        "Account created, but artisan profile could not be created. " +
+                        "Account was created but artisan profile could not be created. " +
                         artisanError.message
                     );
 
@@ -586,13 +596,10 @@
             form.reset();
 
 
-            // If email confirmation is required,
-            // Supabase may return a user without session.
-            // In that case user must verify their email first.
-
             setTimeout(function() {
 
-                window.location.href = "login.html";
+                window.location.href =
+                    "login.html";
 
             }, 1800);
 
@@ -606,9 +613,11 @@
 
 
             showMessage(
-                error.message || "Registration failed.",
+                error.message ||
+                "Registration failed.",
                 "red"
             );
+
 
         } finally {
 
