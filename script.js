@@ -27,20 +27,31 @@ function openCategory(category) {
 
 
 // =====================================================
-// LOGIN
+// PAGE LOAD
 // =====================================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
     console.log("CraftGem website loaded successfully.");
+
+
+    // =====================================================
+    // CHECK CURRENT LOGIN SESSION
+    // =====================================================
+
+    await updateNavbar();
+
+
+    // =====================================================
+    // LOGIN FORM
+    // =====================================================
 
     const loginForm =
         document.getElementById("loginForm");
 
 
-    // =====================================================
-    // IF LOGIN FORM DOES NOT EXIST
-    // =====================================================
+    // If this page does not contain login form,
+    // simply continue because it may be Home page.
 
     if (!loginForm) {
         return;
@@ -253,16 +264,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // =================================================
-                // REDIRECT
+                // REDIRECT TO HOME
                 // =================================================
                 //
-                // IMPORTANT:
-                // artisan-dashboard.html does NOT exist yet.
+                // Dashboard abhi create nahi hua hai.
+                // Isliye फिलहाल Home par redirect karenge.
                 //
-                // So BOTH User and Artisan are temporarily
-                // redirected to the existing Home page.
-                //
-                // We will create the Artisan Dashboard later.
+                // Dashboard banne ke baad:
+                // Artisan → artisan-dashboard.html
+                // User → index.html
                 //
                 // =================================================
 
@@ -300,3 +310,245 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 });
+
+
+// =====================================================
+// UPDATE NAVBAR
+// =====================================================
+
+async function updateNavbar() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const navButtons =
+            document.querySelector(".nav-buttons");
+
+
+        // If navbar does not exist on this page
+        if (!navButtons) {
+            return;
+        }
+
+
+        // =================================================
+        // USER IS NOT LOGGED IN
+        // =================================================
+
+        if (!session) {
+
+            navButtons.innerHTML = `
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+                <a href="register.html" class="register-btn">
+                    Register
+                </a>
+            `;
+
+            return;
+        }
+
+
+        // =================================================
+        // USER IS LOGGED IN
+        // =================================================
+
+        const user = session.user;
+
+
+        // Get profile
+        const {
+            data: profile
+        } =
+            await supabaseClient
+                .from("profiles")
+                .select(
+                    "full_name, user_type"
+                )
+                .eq("id", user.id)
+                .single();
+
+
+        const userName =
+            profile?.full_name ||
+            user.email ||
+            "User";
+
+
+        const userType =
+            profile?.user_type ||
+            "user";
+
+
+        // Save current user information
+        localStorage.setItem(
+            "craftgem_user_id",
+            user.id
+        );
+
+        localStorage.setItem(
+            "craftgem_user_email",
+            user.email || ""
+        );
+
+        localStorage.setItem(
+            "craftgem_user_name",
+            userName
+        );
+
+        localStorage.setItem(
+            "craftgem_user_type",
+            userType
+        );
+
+
+        // =================================================
+        // LOGGED-IN NAVBAR
+        // =================================================
+
+        let dashboardButton = "";
+
+
+        // Dashboard link sirf Artisan ke liye
+        // abhi dashboard file create nahi hui hai,
+        // isliye ise temporarily hide rakhenge.
+
+        if (userType === "artisan") {
+
+            dashboardButton = `
+                <a href="artisan-dashboard.html"
+                   class="login-btn">
+                    Dashboard
+                </a>
+            `;
+        }
+
+
+        navButtons.innerHTML = `
+
+            ${dashboardButton}
+
+            <span class="welcome-user">
+                Hi, ${escapeHtml(userName)}
+            </span>
+
+            <button
+                type="button"
+                class="register-btn"
+                id="logoutBtn">
+                Logout
+            </button>
+
+        `;
+
+
+        // =================================================
+        // LOGOUT BUTTON
+        // =================================================
+
+        const logoutBtn =
+            document.getElementById("logoutBtn");
+
+
+        if (logoutBtn) {
+
+            logoutBtn.addEventListener(
+                "click",
+                async function () {
+
+                    logoutBtn.disabled = true;
+
+                    logoutBtn.textContent =
+                        "Logging out...";
+
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient.auth.signOut();
+
+
+                    if (error) {
+
+                        console.error(
+                            "Logout Error:",
+                            error
+                        );
+
+                        alert(
+                            "Logout failed:\n\n" +
+                            error.message
+                        );
+
+                        logoutBtn.disabled = false;
+
+                        logoutBtn.textContent =
+                            "Logout";
+
+                        return;
+                    }
+
+
+                    // Clear local storage
+                    localStorage.removeItem(
+                        "craftgem_user_id"
+                    );
+
+                    localStorage.removeItem(
+                        "craftgem_user_email"
+                    );
+
+                    localStorage.removeItem(
+                        "craftgem_user_name"
+                    );
+
+                    localStorage.removeItem(
+                        "craftgem_user_type"
+                    );
+
+
+                    // Go to home
+                    window.location.href =
+                        "index.html";
+
+                }
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Navbar session error:",
+            error
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// ESCAPE HTML
+// =====================================================
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
