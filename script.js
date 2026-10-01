@@ -123,3 +123,168 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 console.log("Supabase connected:", window.supabaseClient);
+// =====================================================
+// CRAFTGEM - SUPABASE LOGIN
+// =====================================================
+
+const SUPABASE_URL = "https://tsgrrnivmaujjteavgkf.supabase.co/rest/v1/";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+// =====================================================
+// LOGIN FORM
+// =====================================================
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        const email = document
+            .getElementById("email")
+            .value
+            .trim();
+
+        const password = document
+            .getElementById("password")
+            .value;
+
+        if (!email || !password) {
+            alert("Please enter email and password.");
+            return;
+        }
+
+        // Disable button while logging in
+        const loginButton =
+            loginForm.querySelector("button[type='submit']");
+
+        loginButton.disabled = true;
+        loginButton.textContent = "Logging in...";
+
+
+        // =================================================
+        // SUPABASE LOGIN
+        // =================================================
+
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+
+        // =================================================
+        // ERROR
+        // =================================================
+
+        if (error) {
+
+            console.error("Login Error:", error);
+
+            alert(
+                "Login failed:\n\n" +
+                error.message
+            );
+
+            loginButton.disabled = false;
+            loginButton.textContent = "Login";
+
+            return;
+        }
+
+
+        // =================================================
+        // GET LOGGED-IN USER
+        // =================================================
+
+        const user = data.user;
+
+        if (!user) {
+
+            alert("Login failed. Please try again.");
+
+            loginButton.disabled = false;
+            loginButton.textContent = "Login";
+
+            return;
+        }
+
+
+        // =================================================
+        // GET USER PROFILE
+        // =================================================
+
+        const { data: profile, error: profileError } =
+            await supabaseClient
+                .from("profiles")
+                .select("user_type, full_name")
+                .eq("id", user.id)
+                .single();
+
+
+        if (profileError) {
+
+            console.error(
+                "Profile Error:",
+                profileError
+            );
+
+            alert(
+                "Login successful, but your profile could not be loaded."
+            );
+
+            loginButton.disabled = false;
+            loginButton.textContent = "Login";
+
+            return;
+        }
+
+
+        // =================================================
+        // SAVE USER INFORMATION
+        // =================================================
+
+        localStorage.setItem(
+            "craftgem_user_type",
+            profile.user_type
+        );
+
+        localStorage.setItem(
+            "craftgem_user_name",
+            profile.full_name
+        );
+
+        localStorage.setItem(
+            "craftgem_user_id",
+            user.id
+        );
+
+
+        // =================================================
+        // REDIRECT
+        // =================================================
+
+        if (profile.user_type === "artisan") {
+
+            // Change this later if your dashboard has
+            // a different filename.
+            window.location.href = "artisan-dashboard.html";
+
+        } else {
+
+            window.location.href = "index.html";
+        }
+
+    });
+
+}
