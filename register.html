@@ -263,22 +263,15 @@
 
 
         <p class="auth-link">
-
             Already have an account?
-
-            <a href="login.html">
-                Login
-            </a>
-
+            <a href="login.html">Login</a>
         </p>
 
 
         <div class="back-home">
-
             <a href="index.html">
                 ← Back to Home
             </a>
-
         </div>
 
     </div>
@@ -286,21 +279,20 @@
 </div>
 
 
-<!-- ===================================================== -->
-<!-- SUPABASE -->
-<!-- ===================================================== -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
     // =====================================================
-    // SUPABASE CONFIGURATION
+    // SUPABASE CONFIG
     // =====================================================
 
     const SUPABASE_URL =
-        "https://qxzxzuyrzuqwgdunzlek.supabase.co";
+        "https://tsgrrnivmaujjteavgkf.supabase.co";
 
     const SUPABASE_PUBLISHABLE_KEY =
         "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
@@ -313,11 +305,11 @@
         );
 
 
-    console.log("CraftGem Supabase connected successfully");
+    console.log("CraftGem Supabase connected");
 
 
     // =====================================================
-    // FORM ELEMENTS
+    // ELEMENTS
     // =====================================================
 
     const form =
@@ -343,7 +335,7 @@
 
 
     // =====================================================
-    // REGISTER FORM
+    // REGISTER
     // =====================================================
 
     form.addEventListener("submit", async function(event) {
@@ -392,9 +384,9 @@
         showMessage("", "");
 
 
-        // =================================================
+        // -------------------------------------------------
         // VALIDATION
-        // =================================================
+        // -------------------------------------------------
 
         if (password !== confirmPassword) {
 
@@ -440,14 +432,12 @@
         }
 
 
-        // =================================================
+        // -------------------------------------------------
         // DISABLE BUTTON
-        // =================================================
+        // -------------------------------------------------
 
         button.disabled = true;
-
-        button.textContent =
-            "Creating Account...";
+        button.textContent = "Creating Account...";
 
 
         try {
@@ -464,28 +454,19 @@
                     password: password,
 
                     options: {
-
                         data: {
-
                             full_name: name,
-
                             phone: phone,
-
                             location: location,
-
                             user_type: role
-
                         }
-
                     }
 
                 });
 
 
             if (error) {
-
                 throw error;
-
             }
 
 
@@ -534,12 +515,12 @@
             if (profileError) {
 
                 console.error(
-                    "Profile Error:",
+                    "Profile error:",
                     profileError
                 );
 
                 throw new Error(
-                    "Account was created but profile could not be saved. " +
+                    "Account created but profile could not be saved: " +
                     profileError.message
                 );
 
@@ -569,12 +550,12 @@
                 if (artisanError) {
 
                     console.error(
-                        "Artisan Error:",
+                        "Artisan profile error:",
                         artisanError
                     );
 
                     throw new Error(
-                        "Account was created but artisan profile could not be created. " +
+                        "Account created but artisan profile could not be saved: " +
                         artisanError.message
                     );
 
@@ -598,8 +579,7 @@
 
             setTimeout(function() {
 
-                window.location.href =
-                    "login.html";
+                window.location.href = "login.html";
 
             }, 1800);
 
@@ -607,14 +587,13 @@
         } catch (error) {
 
             console.error(
-                "Registration Error:",
+                "Registration error:",
                 error
             );
 
 
             showMessage(
-                error.message ||
-                "Registration failed.",
+                error.message || "Registration failed.",
                 "red"
             );
 
