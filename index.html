@@ -17,56 +17,67 @@
     ====================================================== -->
 
     <header>
+
         <nav class="navbar">
 
             <div class="logo">
                 Hidden<span>Gems</span>
             </div>
 
+
             <ul class="nav-links">
 
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.html">
+                        Home
+                    </a>
                 </li>
 
                 <li>
-                    <a href="artisans.html">Explore Artisans</a>
+                    <a
+                        href="artisans.html"
+                        onclick="requireLogin('artisans.html'); return false;"
+                    >
+                        Explore Artisans
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#categories">Categories</a>
+                    <a href="#categories">
+                        Categories
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#about">About Us</a>
+                    <a href="#about">
+                        About Us
+                    </a>
                 </li>
 
             </ul>
 
+
             <!--
                 IMPORTANT:
-                script.js will automatically change this area.
+
+                DO NOT put Login/Register here.
+
+                script.js automatically handles:
 
                 Logged out:
                 Login + Register
 
                 Logged in:
-                Dashboard + Welcome + Logout
+                Hi, Name + Logout
+
+                Artisan:
+                Dashboard + Hi, Name + Logout
             -->
 
-            <div class="nav-buttons">
-
-                <a href="login.html" class="login-btn">
-                    Login
-                </a>
-
-                <a href="register.html" class="register-btn">
-                    Register
-                </a>
-
-            </div>
+            <div class="nav-buttons"></div>
 
         </nav>
+
     </header>
 
 
@@ -82,11 +93,13 @@
                 DISCOVER LOCAL TALENT
             </p>
 
+
             <h1>
                 Discover the
                 <span>Hidden Gems</span>
                 of Our Community
             </h1>
+
 
             <p class="hero-text">
                 Connect with talented local artisans, discover traditional
@@ -94,20 +107,26 @@
                 cultural heritage.
             </p>
 
+
             <div class="hero-buttons">
+
+                <!-- EXPLORE ARTISANS -->
 
                 <a
                     href="artisans.html"
                     class="primary-btn"
+                    onclick="requireLogin('artisans.html'); return false;"
                 >
                     Explore Artisans
                 </a>
 
-                <!-- Changed from register.html to contact.html -->
+
+                <!-- JOIN AS ARTISAN -->
 
                 <a
                     href="contact.html"
                     class="secondary-btn"
+                    onclick="requireLogin('contact.html'); return false;"
                 >
                     Join as an Artisan
                 </a>
@@ -125,9 +144,11 @@
                     🎨
                 </div>
 
+
                 <h3>
                     Traditional Skills
                 </h3>
+
 
                 <p>
                     Preserving skills for future generations
@@ -155,9 +176,11 @@
                 EXPLORE
             </p>
 
+
             <h2>
                 Discover Local Skills
             </h2>
+
 
             <span>
                 Find talented artisans from different categories.
@@ -180,9 +203,11 @@
                     🧶
                 </div>
 
+
                 <h3>
                     Handicrafts
                 </h3>
+
 
                 <p>
                     Traditional handmade crafts
@@ -202,9 +227,11 @@
                     🏺
                 </div>
 
+
                 <h3>
                     Pottery
                 </h3>
+
 
                 <p>
                     Traditional pottery and clay art
@@ -224,9 +251,11 @@
                     🎨
                 </div>
 
+
                 <h3>
                     Painting
                 </h3>
+
 
                 <p>
                     Local traditional paintings
@@ -246,9 +275,11 @@
                     🧵
                 </div>
 
+
                 <h3>
                     Textile
                 </h3>
+
 
                 <p>
                     Handwoven and traditional textiles
@@ -268,9 +299,11 @@
                     🪵
                 </div>
 
+
                 <h3>
                     Woodwork
                 </h3>
+
 
                 <p>
                     Traditional wooden craftsmanship
@@ -290,9 +323,11 @@
                     💍
                 </div>
 
+
                 <h3>
                     Jewellery
                 </h3>
+
 
                 <p>
                     Handmade traditional jewellery
@@ -320,15 +355,18 @@
                 ABOUT HIDDEN GEMS
             </p>
 
+
             <h2>
                 Bringing Local Artisans
                 Into the Digital World
             </h2>
 
+
             <p>
                 Hidden Gems is a community platform designed to give local
                 artisans digital visibility and help them reach more people.
             </p>
+
 
             <p>
                 Artisans can create profiles, showcase their products,
@@ -336,11 +374,13 @@
                 requests from interested users.
             </p>
 
-            <!-- Changed from register.html to contact.html -->
+
+            <!-- BECOME AN ARTISAN -->
 
             <a
                 href="contact.html"
                 class="primary-btn"
+                onclick="requireLogin('contact.html'); return false;"
             >
                 Become an Artisan
             </a>
@@ -410,6 +450,7 @@
                     Hidden<span>Gems</span>
                 </h2>
 
+
                 <p>
                     Connecting communities with local artisans
                     and traditional skills.
@@ -426,17 +467,24 @@
                     Quick Links
                 </h3>
 
+
                 <a href="index.html">
                     Home
                 </a>
 
-                <a href="artisans.html">
+
+                <a
+                    href="artisans.html"
+                    onclick="requireLogin('artisans.html'); return false;"
+                >
                     Artisans
                 </a>
+
 
                 <a href="login.html">
                     Login
                 </a>
+
 
                 <a href="register.html">
                     Register
@@ -453,9 +501,11 @@
                     Contact
                 </h3>
 
+
                 <p>
                     Email: support@hiddengems.com
                 </p>
+
 
                 <p>
                     Local Artisan Community Platform
@@ -479,14 +529,12 @@
          SUPABASE
     ====================================================== -->
 
-    <!-- IMPORTANT:
-         Package name must be lowercase.
-    -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-    <!-- CRAFTGEM JAVASCRIPT -->
+    <!-- =====================================================
+         CRAFTGEM JAVASCRIPT
+    ====================================================== -->
 
     <script src="script.js"></script>
 
