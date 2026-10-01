@@ -1,11 +1,6 @@
-////////////////////////////////////////////////////////////
-// CRAFTGEM - MAIN SCRIPT.JS
-////////////////////////////////////////////////////////////
-
-
-// ==========================================================
-// SUPABASE CONFIGURATION
-// ==========================================================
+// =====================================================
+// CRAFTGEM - SCRIPT.JS
+// =====================================================
 
 const SUPABASE_URL =
     "https://tsgrrnivmaujjteavgkf.supabase.co";
@@ -14,27 +9,21 @@ const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
 
 
-// Create only one Supabase client
-if (!window.supabaseClient) {
-    window.supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
-        );
-}
-
-const supabaseClient = window.supabaseClient;
+// Create Supabase client
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
 
 
-// ==========================================================
-// HELPER - ESCAPE HTML
-// ==========================================================
+// =====================================================
+// HTML ESCAPE
+// =====================================================
 
 function escapeHtml(value) {
 
-    if (value === null || value === undefined) {
-        return "";
-    }
+    if (!value) return "";
 
     return String(value)
         .replace(/&/g, "&amp;")
@@ -45,50 +34,46 @@ function escapeHtml(value) {
 }
 
 
-// ==========================================================
-// SAVE PAGE USER WANTED TO VISIT
-// ==========================================================
+// =====================================================
+// SAVE REDIRECT
+// =====================================================
 
-function saveRedirectPage(destination) {
-
-    if (!destination) {
-        destination = "index.html";
-    }
+function saveRedirectPage(page) {
 
     sessionStorage.setItem(
         "craftgem_redirect_after_login",
-        destination
+        page
     );
 }
 
 
-// ==========================================================
-// GET SAVED REDIRECT PAGE
-// ==========================================================
+// =====================================================
+// GET REDIRECT
+// =====================================================
 
 function getRedirectPage() {
 
-    const destination =
+    const page =
         sessionStorage.getItem(
             "craftgem_redirect_after_login"
         );
 
-    if (destination) {
+    if (page) {
 
         sessionStorage.removeItem(
             "craftgem_redirect_after_login"
         );
 
-        return destination;
+        return page;
     }
 
     return "index.html";
 }
 
 
-// ==========================================================
+// =====================================================
 // REQUIRE LOGIN
-// ==========================================================
+// =====================================================
 
 async function requireLogin(destination) {
 
@@ -99,117 +84,35 @@ async function requireLogin(destination) {
     } = await supabaseClient.auth.getSession();
 
 
-    // User is already logged in
+    // Already logged in
     if (session) {
 
-        if (destination) {
-            window.location.href = destination;
-        }
+        window.location.href =
+            destination;
 
-        return true;
+        return;
     }
 
 
-    // User is not logged in
+    // Not logged in
     saveRedirectPage(destination);
 
-    window.location.href = "login.html";
+    alert("Login to continue");
 
-    return false;
+    window.location.href =
+        "login.html";
 }
 
 
-// Make function available to HTML onclick
-window.requireLogin = requireLogin;
+window.requireLogin =
+    requireLogin;
 
 
-// ==========================================================
-// PROTECTED LINKS
-// ==========================================================
-
-function setupProtectedLinks() {
-
-    const protectedPages = [
-
-        "artisans.html",
-        "artisan-profile.html",
-        "contact.html",
-        "knowledge.html",
-        "categories.html",
-        "products.html",
-        "artisan-dashboard.html"
-
-    ];
-
-
-    const links =
-        document.querySelectorAll("a[href]");
-
-
-    links.forEach(link => {
-
-        const href =
-            link.getAttribute("href");
-
-
-        if (!href) {
-            return;
-        }
-
-
-        // Ignore external links
-        if (
-            href.startsWith("http://") ||
-            href.startsWith("https://") ||
-            href.startsWith("#") ||
-            href.startsWith("mailto:")
-        ) {
-            return;
-        }
-
-
-        const cleanHref =
-            href.split("#")[0];
-
-
-        if (
-            protectedPages.includes(
-                cleanHref
-            )
-        ) {
-
-            link.addEventListener(
-                "click",
-                async function(event) {
-
-                    event.preventDefault();
-
-                    await requireLogin(
-                        href
-                    );
-
-                }
-            );
-
-        }
-
-    });
-
-}
-
-
-// ==========================================================
+// =====================================================
 // CATEGORY CLICK
-// ==========================================================
+// =====================================================
 
 function openCategory(category) {
-
-    /*
-     * Category cards from Home page.
-     *
-     * We save the selected category so that
-     * artisans.html can use it later.
-     */
 
     sessionStorage.setItem(
         "craftgem_selected_category",
@@ -222,12 +125,13 @@ function openCategory(category) {
     );
 }
 
-window.openCategory = openCategory;
+window.openCategory =
+    openCategory;
 
 
-// ==========================================================
+// =====================================================
 // UPDATE NAVBAR
-// ==========================================================
+// =====================================================
 
 async function updateNavbar() {
 
@@ -237,9 +141,7 @@ async function updateNavbar() {
         );
 
 
-    if (!navButtons) {
-        return;
-    }
+    if (!navButtons) return;
 
 
     const {
@@ -249,9 +151,9 @@ async function updateNavbar() {
     } = await supabaseClient.auth.getSession();
 
 
-    // ======================================================
+    // =================================================
     // LOGGED OUT
-    // ======================================================
+    // =================================================
 
     if (!session) {
 
@@ -277,9 +179,9 @@ async function updateNavbar() {
     }
 
 
-    // ======================================================
+    // =================================================
     // LOGGED IN
-    // ======================================================
+    // =================================================
 
     const user =
         session.user;
@@ -288,38 +190,24 @@ async function updateNavbar() {
     let profile = null;
 
 
-    try {
-
-        const {
-            data,
-            error
-        } = await supabaseClient
-            .from("profiles")
-            .select(
-                "id, full_name, email, phone, location, user_type"
-            )
-            .eq(
-                "id",
-                user.id
-            )
-            .single();
+    const {
+        data
+    } = await supabaseClient
+        .from("profiles")
+        .select(
+            "id, full_name, email, phone, location, user_type"
+        )
+        .eq(
+            "id",
+            user.id
+        )
+        .single();
 
 
-        if (!error) {
-            profile = data;
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Profile fetch error:",
-            error
-        );
-
-    }
+    profile = data;
 
 
-    const userName =
+    const name =
         profile?.full_name ||
         user.user_metadata?.full_name ||
         user.email ||
@@ -331,7 +219,7 @@ async function updateNavbar() {
         "user";
 
 
-    // Save useful information locally
+    // Save login information
 
     localStorage.setItem(
         "craftgem_user_id",
@@ -345,7 +233,7 @@ async function updateNavbar() {
 
     localStorage.setItem(
         "craftgem_user_name",
-        userName
+        name
     );
 
     localStorage.setItem(
@@ -354,9 +242,9 @@ async function updateNavbar() {
     );
 
 
-    // ======================================================
-    // ARTISAN DASHBOARD BUTTON
-    // ======================================================
+    // =================================================
+    // ARTISAN DASHBOARD
+    // =================================================
 
     let dashboardButton = "";
 
@@ -373,20 +261,19 @@ async function updateNavbar() {
             </a>
 
         `;
-
     }
 
 
-    // ======================================================
+    // =================================================
     // LOGGED-IN NAVBAR
-    // ======================================================
+    // =================================================
 
     navButtons.innerHTML = `
 
         ${dashboardButton}
 
         <span class="welcome-text">
-            Hi, ${escapeHtml(userName)}
+            Hi, ${escapeHtml(name)}
         </span>
 
         <button
@@ -400,9 +287,9 @@ async function updateNavbar() {
     `;
 
 
-    // ======================================================
+    // =================================================
     // LOGOUT
-    // ======================================================
+    // =================================================
 
     const logoutButton =
         document.getElementById(
@@ -414,38 +301,10 @@ async function updateNavbar() {
 
         logoutButton.addEventListener(
             "click",
-            async function() {
+            async function () {
 
-                logoutButton.disabled = true;
+                await supabaseClient.auth.signOut();
 
-                logoutButton.textContent =
-                    "Logging out...";
-
-
-                const {
-                    error
-                } =
-                    await supabaseClient.auth.signOut();
-
-
-                if (error) {
-
-                    console.error(
-                        "Logout error:",
-                        error
-                    );
-
-                    logoutButton.disabled =
-                        false;
-
-                    logoutButton.textContent =
-                        "Logout";
-
-                    return;
-                }
-
-
-                // Clear local information
 
                 localStorage.removeItem(
                     "craftgem_user_id"
@@ -466,18 +325,15 @@ async function updateNavbar() {
 
                 window.location.href =
                     "index.html";
-
             }
         );
-
     }
-
 }
 
 
-// ==========================================================
-// LOGIN FORM
-// ==========================================================
+// =====================================================
+// LOGIN
+// =====================================================
 
 function setupLoginForm() {
 
@@ -487,225 +343,142 @@ function setupLoginForm() {
         );
 
 
-    if (!loginForm) {
-        return;
-    }
+    if (!loginForm) return;
 
 
     loginForm.addEventListener(
         "submit",
-        async function(event) {
+        async function (event) {
 
             event.preventDefault();
 
 
-            const emailInput =
-                document.getElementById(
-                    "email"
-                );
-
-            const passwordInput =
-                document.getElementById(
-                    "password"
-                );
-
-
             const email =
-                emailInput
-                    ? emailInput.value.trim()
-                    : "";
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
 
 
             const password =
-                passwordInput
-                    ? passwordInput.value
-                    : "";
+                document
+                    .getElementById("password")
+                    .value;
 
 
             if (!email || !password) {
 
                 alert(
-                    "Please enter your email and password."
+                    "Please enter email and password."
                 );
 
                 return;
             }
 
 
-            // Find common message element
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth
+                    .signInWithPassword({
 
-            const messageElement =
-                document.getElementById(
-                    "loginMessage"
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+            if (error) {
+
+                alert(
+                    error.message
                 );
 
-
-            try {
-
-                const {
-                    data,
-                    error
-                } =
-                    await supabaseClient.auth
-                        .signInWithPassword({
-
-                            email: email,
-
-                            password: password
-
-                        });
-
-
-                if (error) {
-
-                    console.error(
-                        "Login error:",
-                        error
-                    );
-
-
-                    if (messageElement) {
-
-                        messageElement.textContent =
-                            error.message;
-
-                    } else {
-
-                        alert(
-                            error.message
-                        );
-
-                    }
-
-                    return;
-                }
-
-
-                const user =
-                    data.user;
-
-
-                // ==================================================
-                // FETCH PROFILE
-                // ==================================================
-
-                let profile = null;
-
-
-                const {
-                    data: profileData
-                } =
-                    await supabaseClient
-                        .from("profiles")
-                        .select(
-                            "id, full_name, email, phone, location, user_type"
-                        )
-                        .eq(
-                            "id",
-                            user.id
-                        )
-                        .single();
-
-
-                profile =
-                    profileData || null;
-
-
-                const userName =
-                    profile?.full_name ||
-                    user.user_metadata?.full_name ||
-                    user.email ||
-                    "User";
-
-
-                const userType =
-                    profile?.user_type ||
-                    "user";
-
-
-                // ==================================================
-                // SAVE LOGIN INFO
-                // ==================================================
-
-                localStorage.setItem(
-                    "craftgem_user_id",
-                    user.id
-                );
-
-                localStorage.setItem(
-                    "craftgem_user_email",
-                    user.email || ""
-                );
-
-                localStorage.setItem(
-                    "craftgem_user_name",
-                    userName
-                );
-
-                localStorage.setItem(
-                    "craftgem_user_type",
-                    userType
-                );
-
-
-                // ==================================================
-                // REDIRECT TO ORIGINAL DESTINATION
-                // ==================================================
-
-                const destination =
-                    getRedirectPage();
-
-
-                window.location.href =
-                    destination;
-
-            } catch (error) {
-
-                console.error(
-                    "Unexpected login error:",
-                    error
-                );
-
-
-                if (messageElement) {
-
-                    messageElement.textContent =
-                        "Something went wrong. Please try again.";
-
-                } else {
-
-                    alert(
-                        "Something went wrong. Please try again."
-                    );
-
-                }
-
+                return;
             }
+
+
+            const user =
+                data.user;
+
+
+            // Get profile
+
+            const {
+                data: profile
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .select(
+                        "id, full_name, email, phone, location, user_type"
+                    )
+                    .eq(
+                        "id",
+                        user.id
+                    )
+                    .single();
+
+
+            const name =
+                profile?.full_name ||
+                user.email ||
+                "User";
+
+
+            const userType =
+                profile?.user_type ||
+                "user";
+
+
+            localStorage.setItem(
+                "craftgem_user_id",
+                user.id
+            );
+
+            localStorage.setItem(
+                "craftgem_user_email",
+                user.email || ""
+            );
+
+            localStorage.setItem(
+                "craftgem_user_name",
+                name
+            );
+
+            localStorage.setItem(
+                "craftgem_user_type",
+                userType
+            );
+
+
+            // IMPORTANT:
+            // Go back to the page the user originally wanted.
+
+            const destination =
+                getRedirectPage();
+
+
+            window.location.href =
+                destination;
 
         }
     );
-
 }
 
 
-// ==========================================================
-// PAGE INITIALIZATION
-// ==========================================================
+// =====================================================
+// PAGE LOAD
+// =====================================================
 
 document.addEventListener(
     "DOMContentLoaded",
-    async function() {
+    function () {
 
-        // Update navbar
-        await updateNavbar();
+        updateNavbar();
 
-
-        // Setup login
         setupLoginForm();
-
-
-        // Setup protected links
-        setupProtectedLinks();
 
     }
 );
