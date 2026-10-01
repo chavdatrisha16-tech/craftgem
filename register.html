@@ -150,208 +150,221 @@
 
 <body>
 
-    <div class="register-container">
+<div class="register-container">
 
-        <div class="logo">Hidden Gems</div>
+    <div class="logo">Hidden Gems</div>
 
-        <div class="subtitle">
-            Create your account and discover local talent
-        </div>
-
-        <form id="registerForm">
-
-            <!-- Full Name -->
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-
-                <input
-                    type="text"
-                    id="fullName"
-                    placeholder="Enter your full name"
-                    required
-                >
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    required
-                >
-            </div>
-
-            <!-- Phone -->
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter 10 digit phone number"
-                    maxlength="10"
-                    required
-                >
-            </div>
-
-            <!-- Location -->
-            <div class="form-group">
-                <label for="location">Location</label>
-
-                <input
-                    type="text"
-                    id="location"
-                    placeholder="Enter your city / location"
-                    required
-                >
-            </div>
-
-            <!-- Register As -->
-            <div class="form-group">
-                <label for="userType">Register As</label>
-
-                <select id="userType" required>
-                    <option value="user">User</option>
-                    <option value="artisan">Artisan</option>
-                </select>
-            </div>
-
-            <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Create a password"
-                    minlength="6"
-                    required
-                >
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Re-enter your password"
-                    minlength="6"
-                    required
-                >
-            </div>
-
-            <!-- Button -->
-            <button
-                type="submit"
-                class="create-btn"
-                id="createAccountBtn"
-            >
-                Create Account
-            </button>
-
-            <!-- Message -->
-            <div id="message" class="message"></div>
-
-        </form>
-
-        <div class="login-text">
-            Already have an account?
-            <a href="login.html">Login</a>
-        </div>
-
-        <a href="index.html" class="home-link">
-            ← Back to Home
-        </a>
-
+    <div class="subtitle">
+        Create your account and discover local talent
     </div>
 
+    <form id="registerForm">
 
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+
+            <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+                required
+            >
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter 10 digit phone number"
+                maxlength="10"
+                required
+            >
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+            <label for="location">Location</label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Enter your city / location"
+                required
+            >
+        </div>
+
+        <!-- Register As -->
+        <div class="form-group">
+            <label for="userType">Register As</label>
+
+            <select id="userType" required>
+                <option value="user">User</option>
+                <option value="artisan">Artisan</option>
+            </select>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Create a password"
+                minlength="6"
+                required
+            >
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Re-enter your password"
+                minlength="6"
+                required
+            >
+        </div>
+
+        <!-- Create Account -->
+        <button
+            type="submit"
+            class="create-btn"
+            id="createAccountBtn"
+        >
+            Create Account
+        </button>
+
+        <div id="message" class="message"></div>
+
+    </form>
+
+    <div class="login-text">
+        Already have an account?
+        <a href="login.html">Login</a>
+    </div>
+
+    <a href="index.html" class="home-link">
+        ← Back to Home
+    </a>
+
+</div>
 
 
-    <script>
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        // =====================================================
-        // SUPABASE CONFIGURATION
-        // =====================================================
+<script>
 
-        const SUPABASE_URL = "https://tsgrrnivmaujjteavgkf.supabase.co";
+    // =====================================================
+    // SUPABASE CONFIG
+    // =====================================================
 
-        const SUPABASE_PUBLISHABLE_KEY =
-            "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+    const SUPABASE_URL =
+        "https://tsgrrnivmaujjteavgkf.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
 
 
-        const supabaseClient = window.supabase.createClient(
-            "https://tsgrrnivmaujjteavgkf.supabase.co";,
-           "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
         );
 
 
-        // =====================================================
-        // FORM ELEMENTS
-        // =====================================================
+    // =====================================================
+    // FORM ELEMENTS
+    // =====================================================
 
-        const registerForm =
-            document.getElementById("registerForm");
+    const registerForm =
+        document.getElementById("registerForm");
 
-        const message =
-            document.getElementById("message");
+    const message =
+        document.getElementById("message");
 
-        const createAccountBtn =
-            document.getElementById("createAccountBtn");
-
-
-        // =====================================================
-        // SHOW MESSAGE
-        // =====================================================
-
-        function showMessage(text, type) {
-
-            message.textContent = text;
-
-            message.className = "message " + type;
-        }
+    const createAccountBtn =
+        document.getElementById("createAccountBtn");
 
 
-        // =====================================================
-        // REGISTER
-        // =====================================================
+    // =====================================================
+    // MESSAGE FUNCTION
+    // =====================================================
 
-        registerForm.addEventListener("submit", async function(event) {
+    function showMessage(text, type) {
+
+        message.textContent = text;
+
+        message.className = "message " + type;
+    }
+
+
+    // =====================================================
+    // REGISTER USER
+    // =====================================================
+
+    registerForm.addEventListener(
+        "submit",
+        async function(event) {
 
             event.preventDefault();
 
 
             // -------------------------------------------------
-            // GET FORM VALUES
+            // GET VALUES
             // -------------------------------------------------
 
             const fullName =
-                document.getElementById("fullName").value.trim();
+                document.getElementById("fullName")
+                    .value
+                    .trim();
 
             const email =
-                document.getElementById("email").value.trim();
+                document.getElementById("email")
+                    .value
+                    .trim();
 
             const phone =
-                document.getElementById("phone").value.trim();
+                document.getElementById("phone")
+                    .value
+                    .trim();
 
             const location =
-                document.getElementById("location").value.trim();
+                document.getElementById("location")
+                    .value
+                    .trim();
 
             const userType =
-                document.getElementById("userType").value;
+                document.getElementById("userType")
+                    .value;
 
             const password =
-                document.getElementById("password").value;
+                document.getElementById("password")
+                    .value;
 
             const confirmPassword =
-                document.getElementById("confirmPassword").value;
+                document.getElementById("confirmPassword")
+                    .value;
 
 
             // -------------------------------------------------
@@ -408,7 +421,7 @@
             ) {
 
                 showMessage(
-                    "Please select a valid registration type.",
+                    "Please select User or Artisan.",
                     "error"
                 );
 
@@ -435,20 +448,18 @@
             try {
 
                 // =================================================
-                // CREATE SUPABASE AUTH ACCOUNT
+                // CREATE AUTH ACCOUNT
                 // =================================================
                 //
                 // IMPORTANT:
-                // We DO NOT insert into profiles here.
                 //
-                // Our Supabase database trigger automatically
-                // creates:
+                // We are NOT inserting into profiles here.
                 //
-                // profiles
+                // Supabase database trigger automatically creates
+                // the profile.
                 //
-                // and if userType = artisan:
-                //
-                // artisans
+                // If userType = artisan,
+                // trigger also creates artisan record.
                 //
                 // =================================================
 
@@ -479,13 +490,13 @@
 
 
                 // -------------------------------------------------
-                // SUPABASE ERROR
+                // ERROR
                 // -------------------------------------------------
 
                 if (error) {
 
                     console.error(
-                        "Supabase signup error:",
+                        "Supabase Signup Error:",
                         error
                     );
 
@@ -498,7 +509,7 @@
                 // -------------------------------------------------
 
                 console.log(
-                    "Account created:",
+                    "Signup successful:",
                     data
                 );
 
@@ -510,12 +521,13 @@
 
 
                 // -------------------------------------------------
-                // REDIRECT TO LOGIN
+                // REDIRECT
                 // -------------------------------------------------
 
                 setTimeout(function() {
 
-                    window.location.href = "login.html";
+                    window.location.href =
+                        "login.html";
 
                 }, 1500);
 
@@ -523,17 +535,18 @@
             } catch (error) {
 
                 console.error(
-                    "Registration error:",
+                    "Registration Error:",
                     error
                 );
 
 
                 let errorMessage =
-                    error.message || "Something went wrong.";
+                    error.message ||
+                    "Something went wrong.";
 
 
                 // -------------------------------------------------
-                // FRIENDLY ERROR MESSAGES
+                // FRIENDLY ERRORS
                 // -------------------------------------------------
 
                 if (
@@ -586,7 +599,7 @@
 
         });
 
-    </script>
+</script>
 
 </body>
 </html>
