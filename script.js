@@ -38,14 +38,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("loginForm");
 
 
-    // -------------------------------------------------
-    // LOGIN FORM EXISTS
-    // -------------------------------------------------
+    // =====================================================
+    // IF LOGIN FORM DOES NOT EXIST
+    // =====================================================
 
     if (!loginForm) {
         return;
     }
 
+
+    // =====================================================
+    // LOGIN FORM SUBMIT
+    // =====================================================
 
     loginForm.addEventListener(
         "submit",
@@ -55,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             // -------------------------------------------------
-            // GET LOGIN VALUES
+            // GET EMAIL
             // -------------------------------------------------
 
             const email =
@@ -63,6 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     .getElementById("email")
                     .value
                     .trim();
+
+
+            // -------------------------------------------------
+            // GET PASSWORD
+            // -------------------------------------------------
 
             const password =
                 document
@@ -123,9 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
 
-                // -------------------------------------------------
+                // =================================================
                 // LOGIN ERROR
-                // -------------------------------------------------
+                // =================================================
 
                 if (error) {
 
@@ -143,9 +152,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // -------------------------------------------------
+                // =================================================
                 // USER CHECK
-                // -------------------------------------------------
+                // =================================================
 
                 const user = data.user;
 
@@ -177,15 +186,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     await supabaseClient
                         .from("profiles")
                         .select(
-                            "user_type, full_name"
+                            "id, full_name, email, phone, location, user_type"
                         )
                         .eq("id", user.id)
                         .single();
 
 
-                // -------------------------------------------------
+                // =================================================
                 // PROFILE ERROR
-                // -------------------------------------------------
+                // =================================================
 
                 if (profileError) {
 
@@ -203,57 +212,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 console.log(
-                    "Profile:",
+                    "Profile loaded:",
                     profile
                 );
 
 
                 // =================================================
-                // SAVE LOGIN INFORMATION
+                // SAVE USER DATA
                 // =================================================
-
-                localStorage.setItem(
-                    "craftgem_user_type",
-                    profile.user_type
-                );
-
-                localStorage.setItem(
-                    "craftgem_user_name",
-                    profile.full_name
-                );
 
                 localStorage.setItem(
                     "craftgem_user_id",
                     user.id
                 );
 
+                localStorage.setItem(
+                    "craftgem_user_email",
+                    user.email || ""
+                );
+
+                localStorage.setItem(
+                    "craftgem_user_name",
+                    profile.full_name || ""
+                );
+
+                localStorage.setItem(
+                    "craftgem_user_type",
+                    profile.user_type || "user"
+                );
+
+
+                // =================================================
+                // LOGIN SUCCESS
+                // =================================================
+
+                alert(
+                    "Login successful! Welcome " +
+                    (profile.full_name || "")
+                );
+
 
                 // =================================================
                 // REDIRECT
                 // =================================================
+                //
+                // IMPORTANT:
+                // artisan-dashboard.html does NOT exist yet.
+                //
+                // So BOTH User and Artisan are temporarily
+                // redirected to the existing Home page.
+                //
+                // We will create the Artisan Dashboard later.
+                //
+                // =================================================
 
-                if (
-                    profile.user_type ===
-                    "artisan"
-                ) {
-
-                    console.log(
-                        "Redirecting to artisan dashboard..."
-                    );
-
-                    window.location.href =
-                        "artisan-dashboard.html";
-
-                } else {
-
-                    console.log(
-                        "Redirecting to home page..."
-                    );
-
-                    window.location.href =
-                        "index.html";
-
-                }
+                window.location.href =
+                    "index.html";
 
 
             } catch (error) {
@@ -264,7 +278,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
 
                 alert(
-                    "Something went wrong. Please try again."
+                    "Something went wrong while logging in.\n\n" +
+                    (error.message || "")
                 );
 
 
