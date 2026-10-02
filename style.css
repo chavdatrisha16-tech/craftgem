@@ -14,7 +14,10 @@ body {
     background: #fffaf5;
 }
 
-/* Navbar */
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
 
 header {
     background: white;
@@ -58,30 +61,138 @@ footer span {
     color: #c56b32;
 }
 
+
+/* =====================================================
+   NAVBAR BUTTONS
+   ===================================================== */
+
 .nav-buttons {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
-.login-btn,
-.register-btn {
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-}
+
+/* Login */
 
 .login-btn {
-    color: #c56b32;
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 10px 18px;
+
     border: 1px solid #c56b32;
+    border-radius: 6px;
+
+    background: white;
+    color: #c56b32;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
+
+.login-btn:hover {
+    background: #fff0e5;
+}
+
+
+/* Register */
 
 .register-btn {
-    color: white;
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border: 1px solid #c56b32;
+    border-radius: 6px;
+
     background: #c56b32;
+    color: white;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.register-btn:hover {
+    background: #9f4f22;
 }
 
 
-/* Hero */
+/* Dashboard */
+
+.dashboard-btn {
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border: 1px solid #c56b32;
+    border-radius: 6px;
+
+    background: #c56b32;
+    color: white;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.dashboard-btn:hover {
+    background: #9f4f22;
+}
+
+
+/* Logout */
+
+.logout-btn {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border: 1px solid #c56b32;
+    border-radius: 6px;
+
+    background: #c56b32;
+    color: white;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #9f4f22;
+}
+
+
+/* Welcome Text */
+
+.welcome-text {
+    color: #333;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
 
 .hero {
     min-height: 600px;
@@ -158,7 +269,9 @@ footer span {
 }
 
 
-/* Hero Image Card */
+/* =====================================================
+   HERO IMAGE CARD
+   ===================================================== */
 
 .hero-image {
     width: 40%;
@@ -200,7 +313,9 @@ footer span {
 }
 
 
-/* Categories */
+/* =====================================================
+   CATEGORIES
+   ===================================================== */
 
 .categories {
     padding: 80px 25px;
@@ -269,7 +384,9 @@ footer span {
 }
 
 
-/* About */
+/* =====================================================
+   ABOUT
+   ===================================================== */
 
 .about {
     max-width: 1200px;
@@ -332,7 +449,9 @@ footer span {
 }
 
 
-/* Footer */
+/* =====================================================
+   FOOTER
+   ===================================================== */
 
 footer {
     background: #3d261b;
@@ -384,7 +503,9 @@ footer {
 }
 
 
-/* Mobile */
+/* =====================================================
+   MOBILE
+   ===================================================== */
 
 @media (max-width: 768px) {
 
@@ -397,6 +518,11 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
+    }
+
+    .nav-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .hero {
@@ -434,115 +560,8 @@ footer {
     .footer-content {
         grid-template-columns: 1fr;
     }
-}
 
-/* =====================================================
-   CRAFTGEM NAVBAR BUTTONS
-   ===================================================== */
-
-.nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
-/* Login */
-
-.login-btn {
-    display: inline-block;
-    text-decoration: none;
-
-    padding: 10px 18px;
-
-    border: 1px solid #e87535;
-    border-radius: 7px;
-
-    background: #ffffff;
-    color: #e87535;
-
-    font-size: 14px;
-    font-family: inherit;
-
-    cursor: pointer;
-}
-
-
-/* Register */
-
-.register-btn {
-    display: inline-block;
-    text-decoration: none;
-
-    padding: 10px 18px;
-
-    border: 1px solid #e87535;
-    border-radius: 7px;
-
-    background: #e87535;
-    color: #ffffff;
-
-    font-size: 14px;
-    font-family: inherit;
-
-    cursor: pointer;
-}
-
-
-/* Dashboard */
-
-.dashboard-btn {
-    display: inline-block;
-    text-decoration: none;
-
-    padding: 10px 18px;
-
-    border: 1px solid #e87535;
-    border-radius: 7px;
-
-    background: #e87535;
-    color: #ffffff;
-
-    font-size: 14px;
-    font-family: inherit;
-
-    cursor: pointer;
-}
-
-
-/* Logout */
-
-.logout-btn {
-    display: inline-block;
-
-    padding: 10px 18px;
-
-    border: 1px solid #e87535;
-    border-radius: 7px;
-
-    background: #e87535;
-    color: #ffffff;
-
-    font-size: 14px;
-    font-family: inherit;
-    font-weight: 500;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-
-.logout-btn:hover {
-    background: #d96427;
-    border-color: #d96427;
-}
-
-
-/* Welcome text */
-
-.welcome-text {
-    color: #555;
-    font-size: 14px;
-    white-space: nowrap;
+    .welcome-text {
+        font-size: 13px;
+    }
 }
