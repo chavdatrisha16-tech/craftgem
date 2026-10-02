@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Register | Hidden Gems</title>
 
+
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,155 +22,294 @@
             font-family: Arial, sans-serif;
         }
 
+
         body {
+
             min-height: 100vh;
+
             background: #f7f4ef;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             padding: 30px 15px;
         }
 
+
         .register-container {
+
             width: 100%;
+
             max-width: 520px;
+
             background: white;
+
             padding: 35px;
+
             border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.10);
         }
 
+
         .logo {
+
             text-align: center;
+
             margin-bottom: 10px;
+
             font-size: 30px;
+
             font-weight: bold;
+
             color: #8b4513;
         }
 
+
         .subtitle {
+
             text-align: center;
+
             color: #777;
+
             margin-bottom: 30px;
+
             font-size: 15px;
         }
 
+
         .form-group {
+
             margin-bottom: 18px;
         }
 
+
         label {
+
             display: block;
+
             margin-bottom: 7px;
+
             font-weight: 600;
+
             color: #333;
         }
 
-        input,
-        select {
+
+        input {
+
             width: 100%;
+
             padding: 13px 14px;
+
             border: 1px solid #d5d5d5;
+
             border-radius: 9px;
+
             font-size: 15px;
+
             outline: none;
+
             background: white;
         }
 
-        input:focus,
-        select:focus {
+
+        input:focus {
+
             border-color: #8b4513;
         }
 
+
         .create-btn {
+
             width: 100%;
+
             padding: 14px;
+
             border: none;
+
             border-radius: 9px;
+
             background: #c87532;
+
             color: white;
+
             font-size: 16px;
+
             font-weight: bold;
+
             cursor: pointer;
+
             margin-top: 8px;
+
+            transition: 0.2s ease;
         }
 
+
         .create-btn:hover {
+
             background: #ad6026;
         }
 
+
         .create-btn:disabled {
+
             background: #aaa;
+
             cursor: not-allowed;
         }
 
+
         .message {
+
             margin-top: 18px;
+
             padding: 12px;
+
             border-radius: 8px;
+
             font-size: 14px;
+
             display: none;
+
             line-height: 1.5;
         }
 
+
         .message.success {
+
             display: block;
+
             background: #e8f7e8;
+
             color: #267326;
+
             border: 1px solid #b7dfb7;
         }
 
+
         .message.error {
+
             display: block;
+
             background: #fff0f0;
+
             color: #b42318;
+
             border: 1px solid #f0b5b0;
         }
 
+
         .login-text {
+
             text-align: center;
+
             margin-top: 22px;
+
             color: #666;
+
             font-size: 14px;
         }
+
 
         .login-text a {
+
             color: #8b4513;
+
             font-weight: bold;
+
             text-decoration: none;
         }
 
+
         .home-link {
+
             display: block;
+
             text-align: center;
+
             margin-top: 15px;
+
             color: #777;
+
             text-decoration: none;
+
             font-size: 14px;
         }
+
 
         .home-link:hover,
         .login-text a:hover {
+
             text-decoration: underline;
         }
+
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 20px 12px;
+            }
+
+
+            .register-container {
+
+                padding: 25px 20px;
+            }
+
+
+            .logo {
+
+                font-size: 26px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="register-container">
 
-    <div class="logo">Hidden Gems</div>
+
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+    <div class="logo">
+        Hidden Gems
+    </div>
+
 
     <div class="subtitle">
         Create your account and discover local talent
     </div>
 
+
+    <!-- =====================================================
+         REGISTER FORM
+    ====================================================== -->
+
     <form id="registerForm">
 
-        <!-- Full Name -->
+
+        <!-- FULL NAME -->
+
         <div class="form-group">
-            <label for="fullName">Full Name</label>
+
+            <label for="fullName">
+                Full Name
+            </label>
 
             <input
                 type="text"
@@ -170,11 +317,17 @@
                 placeholder="Enter your full name"
                 required
             >
+
         </div>
 
-        <!-- Email -->
+
+        <!-- EMAIL -->
+
         <div class="form-group">
-            <label for="email">Email</label>
+
+            <label for="email">
+                Email
+            </label>
 
             <input
                 type="email"
@@ -182,24 +335,37 @@
                 placeholder="Enter your email"
                 required
             >
+
         </div>
 
-        <!-- Phone -->
+
+        <!-- PHONE -->
+
         <div class="form-group">
-            <label for="phone">Phone Number</label>
+
+            <label for="phone">
+                Phone Number
+            </label>
 
             <input
                 type="tel"
                 id="phone"
                 placeholder="Enter 10 digit phone number"
                 maxlength="10"
+                inputmode="numeric"
                 required
             >
+
         </div>
 
-        <!-- Location -->
+
+        <!-- LOCATION -->
+
         <div class="form-group">
-            <label for="location">Location</label>
+
+            <label for="location">
+                Location
+            </label>
 
             <input
                 type="text"
@@ -207,13 +373,17 @@
                 placeholder="Enter your city / location"
                 required
             >
+
         </div>
 
-        
 
-        <!-- Password -->
+        <!-- PASSWORD -->
+
         <div class="form-group">
-            <label for="password">Password</label>
+
+            <label for="password">
+                Password
+            </label>
 
             <input
                 type="password"
@@ -222,11 +392,17 @@
                 minlength="6"
                 required
             >
+
         </div>
 
-        <!-- Confirm Password -->
+
+        <!-- CONFIRM PASSWORD -->
+
         <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
 
             <input
                 type="password"
@@ -235,9 +411,12 @@
                 minlength="6"
                 required
             >
+
         </div>
 
-        <!-- Create Account -->
+
+        <!-- CREATE ACCOUNT -->
+
         <button
             type="submit"
             class="create-btn"
@@ -246,30 +425,74 @@
             Create Account
         </button>
 
-        <div id="message" class="message"></div>
+
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
 
     </form>
 
+
+    <!-- =====================================================
+         LOGIN
+    ====================================================== -->
+
     <div class="login-text">
+
         Already have an account?
-        <a href="login.html">Login</a>
+
+        <a href="login.html">
+            Login
+        </a>
+
     </div>
 
-    <a href="index.html" class="home-link">
+
+    <!-- =====================================================
+         HOME
+    ====================================================== -->
+
+    <a
+        href="index.html"
+        class="home-link"
+    >
         ← Back to Home
     </a>
 
+
 </div>
-<!-- SUPABASE -->
+
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
+
+
+// =====================================================
+// SUPABASE CONFIG
+// =====================================================
 
 const SUPABASE_URL =
     "https://tsgrrnivmaujjteavgkf.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+
+
+// =====================================================
+// CREATE SUPABASE CLIENT
+// =====================================================
 
 const supabaseClient =
     window.supabase.createClient(
@@ -285,15 +508,17 @@ const supabaseClient =
 const registerForm =
     document.getElementById("registerForm");
 
+
 const message =
     document.getElementById("message");
+
 
 const createAccountBtn =
     document.getElementById("createAccountBtn");
 
 
 // =====================================================
-// MESSAGE
+// SHOW MESSAGE
 // =====================================================
 
 function showMessage(text, type) {
@@ -306,7 +531,7 @@ function showMessage(text, type) {
 
 
 // =====================================================
-// REGISTER
+// REGISTER FORM
 // =====================================================
 
 registerForm.addEventListener(
@@ -317,35 +542,46 @@ registerForm.addEventListener(
 
 
         // =================================================
-        // GET VALUES
+        // GET FORM VALUES
         // =================================================
 
         const fullName =
-            document.getElementById("fullName")
+            document
+                .getElementById("fullName")
                 .value
                 .trim();
+
 
         const email =
-            document.getElementById("email")
+            document
+                .getElementById("email")
                 .value
                 .trim();
+
 
         const phone =
-            document.getElementById("phone")
+            document
+                .getElementById("phone")
                 .value
                 .trim();
+
 
         const location =
-            document.getElementById("location")
+            document
+                .getElementById("location")
                 .value
                 .trim();
 
+
         const password =
-            document.getElementById("password")
+            document
+                .getElementById("password")
                 .value;
 
+
         const confirmPassword =
-            document.getElementById("confirmPassword")
+            document
+                .getElementById("confirmPassword")
                 .value;
 
 
@@ -437,8 +673,23 @@ registerForm.addEventListener(
 
         try {
 
+
             // =================================================
             // CREATE SUPABASE AUTH ACCOUNT
+            // =================================================
+            //
+            // IMPORTANT:
+            //
+            // We DO NOT manually insert into profiles.
+            //
+            // Supabase database trigger automatically creates
+            // the profile.
+            //
+            // Since there is no user_type field here,
+            // the trigger automatically uses:
+            //
+            // user_type = "user"
+            //
             // =================================================
 
             const { data, error } =
@@ -466,7 +717,7 @@ registerForm.addEventListener(
 
 
             // =================================================
-            // ERROR
+            // CHECK ERROR
             // =================================================
 
             if (error) {
@@ -497,20 +748,25 @@ registerForm.addEventListener(
 
 
             // =================================================
-            // REDIRECT
+            // REDIRECT TO LOGIN
             // =================================================
 
-            setTimeout(function() {
+            setTimeout(
+                function() {
 
-                window.location.href =
-                    "login.html";
+                    window.location.href =
+                        "login.html";
 
-            }, 1500);
+                },
+                1500
+            );
 
 
         }
 
+
         catch (error) {
+
 
             console.error(
                 "Registration Error:",
@@ -520,17 +776,21 @@ registerForm.addEventListener(
 
             let errorMessage =
                 error.message ||
-                "Something went wrong.";
+                "Something went wrong. Please try again.";
 
 
             // =================================================
-            // FRIENDLY ERRORS
+            // FRIENDLY ERROR MESSAGES
             // =================================================
+
+            const lowerMessage =
+                errorMessage.toLowerCase();
+
 
             if (
-                errorMessage
-                    .toLowerCase()
-                    .includes("already registered")
+                lowerMessage.includes(
+                    "already registered"
+                )
             ) {
 
                 errorMessage =
@@ -539,9 +799,20 @@ registerForm.addEventListener(
 
 
             else if (
-                errorMessage
-                    .toLowerCase()
-                    .includes("duplicate")
+                lowerMessage.includes(
+                    "user already registered"
+                )
+            ) {
+
+                errorMessage =
+                    "This email is already registered. Please login instead.";
+            }
+
+
+            else if (
+                lowerMessage.includes(
+                    "duplicate"
+                )
             ) {
 
                 errorMessage =
@@ -550,15 +821,44 @@ registerForm.addEventListener(
 
 
             else if (
-                errorMessage
-                    .toLowerCase()
-                    .includes("rate limit")
+                lowerMessage.includes(
+                    "rate limit"
+                )
             ) {
 
                 errorMessage =
                     "Too many attempts. Please wait before trying again.";
             }
 
+
+            else if (
+                lowerMessage.includes(
+                    "invalid email"
+                )
+            ) {
+
+                errorMessage =
+                    "Please enter a valid email address.";
+            }
+
+
+            else if (
+                lowerMessage.includes(
+                    "password"
+                ) &&
+                lowerMessage.includes(
+                    "6"
+                )
+            ) {
+
+                errorMessage =
+                    "Password must contain at least 6 characters.";
+            }
+
+
+            // =================================================
+            // SHOW ERROR
+            // =================================================
 
             showMessage(
                 errorMessage,
@@ -570,6 +870,11 @@ registerForm.addEventListener(
 
         finally {
 
+
+            // =================================================
+            // ENABLE BUTTON AGAIN
+            // =================================================
+
             createAccountBtn.disabled = false;
 
             createAccountBtn.textContent =
@@ -579,312 +884,10 @@ registerForm.addEventListener(
 
     });
 
+
 </script>
 
-
-    const registerForm =
-        document.getElementById("registerForm");
-
-    const message =
-        document.getElementById("message");
-
-    const createAccountBtn =
-        document.getElementById("createAccountBtn");
-
-
-    // =====================================================
-    // MESSAGE FUNCTION
-    // =====================================================
-
-    function showMessage(text, type) {
-
-        message.textContent = text;
-
-        message.className = "message " + type;
-    }
-
-
-    // =====================================================
-    // REGISTER USER
-    // =====================================================
-
-    registerForm.addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            // -------------------------------------------------
-            // GET VALUES
-            // -------------------------------------------------
-
-            const fullName =
-                document.getElementById("fullName")
-                    .value
-                    .trim();
-
-            const email =
-                document.getElementById("email")
-                    .value
-                    .trim();
-
-            const phone =
-                document.getElementById("phone")
-                    .value
-                    .trim();
-
-            const location =
-                document.getElementById("location")
-                    .value
-                    .trim();
-
-            const userType =
-                document.getElementById("userType")
-                    .value;
-
-            const password =
-                document.getElementById("password")
-                    .value;
-
-            const confirmPassword =
-                document.getElementById("confirmPassword")
-                    .value;
-
-
-            // -------------------------------------------------
-            // VALIDATION
-            // -------------------------------------------------
-
-            if (!fullName) {
-
-                showMessage(
-                    "Please enter your full name.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            if (!/^[0-9]{10}$/.test(phone)) {
-
-                showMessage(
-                    "Please enter a valid 10 digit phone number.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            if (password.length < 6) {
-
-                showMessage(
-                    "Password must contain at least 6 characters.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            if (password !== confirmPassword) {
-
-                showMessage(
-                    "Passwords do not match.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            if (
-                userType !== "user" &&
-                userType !== "artisan"
-            ) {
-
-                showMessage(
-                    "Please select User or Artisan.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            // -------------------------------------------------
-            // DISABLE BUTTON
-            // -------------------------------------------------
-
-            createAccountBtn.disabled = true;
-
-            createAccountBtn.textContent =
-                "Creating Account...";
-
-
-            showMessage(
-                "Creating your account...",
-                "success"
-            );
-
-
-            try {
-
-                // =================================================
-                // CREATE AUTH ACCOUNT
-                // =================================================
-                //
-                // IMPORTANT:
-                //
-                // We are NOT inserting into profiles here.
-                //
-                // Supabase database trigger automatically creates
-                // the profile.
-                //
-                // If userType = artisan,
-                // trigger also creates artisan record.
-                //
-                // =================================================
-
-                const { data, error } =
-                    await supabaseClient.auth.signUp({
-
-                        email: email,
-
-                        password: password,
-
-                        options: {
-
-                            data: {
-
-                                full_name: fullName,
-
-                                phone: phone,
-
-                                location: location,
-
-                                user_type: userType
-
-                            }
-
-                        }
-
-                    });
-
-
-                // -------------------------------------------------
-                // ERROR
-                // -------------------------------------------------
-
-                if (error) {
-
-                    console.error(
-                        "Supabase Signup Error:",
-                        error
-                    );
-
-                    throw error;
-                }
-
-
-                // -------------------------------------------------
-                // SUCCESS
-                // -------------------------------------------------
-
-                console.log(
-                    "Signup successful:",
-                    data
-                );
-
-
-                showMessage(
-                    "Account created successfully! Redirecting to login...",
-                    "success"
-                );
-
-
-                // -------------------------------------------------
-                // REDIRECT
-                // -------------------------------------------------
-
-                setTimeout(function() {
-
-                    window.location.href =
-                        "login.html";
-
-                }, 1500);
-
-
-            } catch (error) {
-
-                console.error(
-                    "Registration Error:",
-                    error
-                );
-
-
-                let errorMessage =
-                    error.message ||
-                    "Something went wrong.";
-
-
-                // -------------------------------------------------
-                // FRIENDLY ERRORS
-                // -------------------------------------------------
-
-                if (
-                    errorMessage
-                        .toLowerCase()
-                        .includes("already registered")
-                ) {
-
-                    errorMessage =
-                        "This email is already registered. Please login instead.";
-                }
-
-
-                else if (
-                    errorMessage
-                        .toLowerCase()
-                        .includes("duplicate")
-                ) {
-
-                    errorMessage =
-                        "This account already exists. Please try logging in.";
-                }
-
-
-                else if (
-                    errorMessage
-                        .toLowerCase()
-                        .includes("rate limit")
-                ) {
-
-                    errorMessage =
-                        "Too many attempts. Please wait before trying again.";
-                }
-
-
-                showMessage(
-                    errorMessage,
-                    "error"
-                );
-
-
-            } finally {
-
-                createAccountBtn.disabled = false;
-
-                createAccountBtn.textContent =
-                    "Create Account";
-
-            }
-
-        });
-
-</script>
 
 </body>
+
 </html>
