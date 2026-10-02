@@ -260,34 +260,327 @@
     </a>
 
 </div>
-
-
 <!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-    // =====================================================
-    // SUPABASE CONFIG
-    // =====================================================
+const SUPABASE_URL =
+    "https://tsgrrnivmaujjteavgkf.supabase.co";
 
-    const SUPABASE_URL =
-        "https://tsgrrnivmaujjteavgkf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
 
-    const SUPABASE_PUBLISHABLE_KEY =
-        "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
 
 
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
+// =====================================================
+// FORM ELEMENTS
+// =====================================================
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const message =
+    document.getElementById("message");
+
+const createAccountBtn =
+    document.getElementById("createAccountBtn");
+
+
+// =====================================================
+// MESSAGE
+// =====================================================
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+}
+
+
+// =====================================================
+// REGISTER
+// =====================================================
+
+registerForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        // =================================================
+        // GET VALUES
+        // =================================================
+
+        const fullName =
+            document.getElementById("fullName")
+                .value
+                .trim();
+
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
+
+        const phone =
+            document.getElementById("phone")
+                .value
+                .trim();
+
+        const location =
+            document.getElementById("location")
+                .value
+                .trim();
+
+        const password =
+            document.getElementById("password")
+                .value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword")
+                .value;
+
+
+        // =================================================
+        // VALIDATION
+        // =================================================
+
+        if (!fullName) {
+
+            showMessage(
+                "Please enter your full name.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!email) {
+
+            showMessage(
+                "Please enter your email.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+
+            showMessage(
+                "Please enter a valid 10 digit phone number.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!location) {
+
+            showMessage(
+                "Please enter your location.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (password.length < 6) {
+
+            showMessage(
+                "Password must contain at least 6 characters.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (password !== confirmPassword) {
+
+            showMessage(
+                "Passwords do not match.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        // =================================================
+        // DISABLE BUTTON
+        // =================================================
+
+        createAccountBtn.disabled = true;
+
+        createAccountBtn.textContent =
+            "Creating Account...";
+
+
+        showMessage(
+            "Creating your account...",
+            "success"
         );
 
 
-    // =====================================================
-    // FORM ELEMENTS
-    // =====================================================
+        try {
+
+            // =================================================
+            // CREATE SUPABASE AUTH ACCOUNT
+            // =================================================
+
+            const { data, error } =
+                await supabaseClient.auth.signUp({
+
+                    email: email,
+
+                    password: password,
+
+                    options: {
+
+                        data: {
+
+                            full_name: fullName,
+
+                            phone: phone,
+
+                            location: location
+
+                        }
+
+                    }
+
+                });
+
+
+            // =================================================
+            // ERROR
+            // =================================================
+
+            if (error) {
+
+                console.error(
+                    "Supabase Signup Error:",
+                    error
+                );
+
+                throw error;
+            }
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            console.log(
+                "Signup successful:",
+                data
+            );
+
+
+            showMessage(
+                "Account created successfully! Redirecting to login...",
+                "success"
+            );
+
+
+            // =================================================
+            // REDIRECT
+            // =================================================
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1500);
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Registration Error:",
+                error
+            );
+
+
+            let errorMessage =
+                error.message ||
+                "Something went wrong.";
+
+
+            // =================================================
+            // FRIENDLY ERRORS
+            // =================================================
+
+            if (
+                errorMessage
+                    .toLowerCase()
+                    .includes("already registered")
+            ) {
+
+                errorMessage =
+                    "This email is already registered. Please login instead.";
+            }
+
+
+            else if (
+                errorMessage
+                    .toLowerCase()
+                    .includes("duplicate")
+            ) {
+
+                errorMessage =
+                    "This account already exists. Please try logging in.";
+            }
+
+
+            else if (
+                errorMessage
+                    .toLowerCase()
+                    .includes("rate limit")
+            ) {
+
+                errorMessage =
+                    "Too many attempts. Please wait before trying again.";
+            }
+
+
+            showMessage(
+                errorMessage,
+                "error"
+            );
+
+        }
+
+
+        finally {
+
+            createAccountBtn.disabled = false;
+
+            createAccountBtn.textContent =
+                "Create Account";
+
+        }
+
+    });
+
+</script>
+
 
     const registerForm =
         document.getElementById("registerForm");
