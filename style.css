@@ -435,3 +435,114 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* =====================================================
+   CRAFTGEM NAVBAR BUTTONS
+   ===================================================== */
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Login */
+
+.login-btn {
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border: 1px solid #e87535;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #e87535;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+
+/* Register */
+
+.register-btn {
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border: 1px solid #e87535;
+    border-radius: 7px;
+
+    background: #e87535;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+
+/* Dashboard */
+
+.dashboard-btn {
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border: 1px solid #e87535;
+    border-radius: 7px;
+
+    background: #e87535;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+
+/* Logout */
+
+.logout-btn {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border: 1px solid #e87535;
+    border-radius: 7px;
+
+    background: #e87535;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.logout-btn:hover {
+    background: #d96427;
+    border-color: #d96427;
+}
+
+
+/* Welcome text */
+
+.welcome-text {
+    color: #555;
+    font-size: 14px;
+    white-space: nowrap;
+}
