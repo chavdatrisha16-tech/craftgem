@@ -11,7 +11,7 @@
 
     <style>
 
-        /* Profile Header */
+        /* ================= PROFILE HEADER ================= */
 
         .profile-header {
             background: #f1d3b9;
@@ -71,7 +71,7 @@
         }
 
 
-        /* Main Profile */
+        /* ================= MAIN PROFILE ================= */
 
         .profile-main {
             max-width: 1100px;
@@ -104,7 +104,7 @@
         }
 
 
-        /* Details */
+        /* ================= DETAILS ================= */
 
         .details-grid {
             display: grid;
@@ -129,7 +129,7 @@
         }
 
 
-        /* Products */
+        /* ================= PRODUCTS ================= */
 
         .products {
             display: grid;
@@ -160,7 +160,7 @@
         }
 
 
-        /* Craft Process */
+        /* ================= CRAFT PROCESS ================= */
 
         .process-step {
             display: flex;
@@ -189,7 +189,7 @@
         }
 
 
-        /* Contact Box */
+        /* ================= CONTACT BOX ================= */
 
         .contact-box {
             background: #3d261b;
@@ -229,8 +229,88 @@
         }
 
 
-       
-        /* Responsive */
+        /* ================= WHATSAPP ================= */
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 13px 22px;
+
+            background: #25D366;
+            color: white;
+
+            text-decoration: none;
+            border-radius: 7px;
+
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .footer-content {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer {
+            background: #302c30;
+            color: white;
+            padding: 45px 25px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer h2 span {
+            color: #c56b32;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        footer a:hover {
+            color: #e07d3c;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 30px;
+            padding-top: 20px;
+            color: #aaa;
+            font-size: 13px;
+        }
+
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 800px) {
 
@@ -251,6 +331,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
         }
 
     </style>
@@ -261,7 +346,7 @@
 <body>
 
 
-    <!-- Navigation -->
+    <!-- ================= NAVIGATION ================= -->
 
     <header>
 
@@ -270,6 +355,7 @@
             <div class="logo">
                 Hidden<span>Gems</span>
             </div>
+
 
             <ul class="nav-links">
 
@@ -299,6 +385,7 @@
 
             </ul>
 
+
             <div class="nav-buttons">
 
                 <a href="login.html" class="login-btn">
@@ -317,14 +404,13 @@
 
 
 
-    <!-- Profile Header -->
+    <!-- ================= PROFILE HEADER ================= -->
 
     <section class="profile-header">
 
         <div class="profile-container">
 
             <div class="profile-top">
-
 
                 <div class="profile-photo">
                     👩‍🎨
@@ -363,17 +449,17 @@
 
 
 
-    <!-- Main Content -->
+    <!-- ================= MAIN CONTENT ================= -->
 
     <main class="profile-main">
 
 
-        <!-- Left Side -->
+        <!-- ================= LEFT SIDE ================= -->
 
         <div>
 
 
-            <!-- About -->
+            <!-- ABOUT -->
 
             <div class="profile-card">
 
@@ -382,29 +468,25 @@
                 </h2>
 
                 <p>
-
                     Meena Sharma is a local handicraft artist
                     who creates traditional handmade products.
                     She has been practicing traditional craft
                     techniques for more than 8 years.
-
                 </p>
 
                 <br>
 
                 <p>
-
                     Her work focuses on preserving traditional
                     designs while creating useful and decorative
                     handmade products for the community.
-
                 </p>
 
             </div>
 
 
 
-            <!-- Details -->
+            <!-- DETAILS -->
 
             <div class="profile-card">
 
@@ -414,6 +496,7 @@
 
 
                 <div class="details-grid">
+
 
                     <div class="detail-box">
 
@@ -466,13 +549,14 @@
 
                     </div>
 
+
                 </div>
 
             </div>
 
 
 
-            <!-- Products -->
+            <!-- PRODUCTS -->
 
             <div class="profile-card">
 
@@ -534,13 +618,14 @@
 
                     </div>
 
+
                 </div>
 
             </div>
 
 
 
-            <!-- Craft Process -->
+            <!-- CRAFT PROCESS -->
 
             <div class="profile-card">
 
@@ -641,27 +726,16 @@
             </div>
 
 
-
-            
-                    <br>
-
-                   
-
-                </div>
-
-            </div>
-
-
         </div>
 
 
 
-        <!-- Right Side -->
+        <!-- ================= RIGHT SIDE ================= -->
 
         <div>
 
 
-            <!-- Contact -->
+            <!-- CONTACT -->
 
             <div class="contact-box">
 
@@ -670,21 +744,31 @@
                 </h2>
 
                 <p>
-
                     Send a contact request to connect
                     with the artisan. Personal contact
                     details will remain protected.
-
                 </p>
 
 
                 <button
                     class="contact-btn"
-                    onclick="sendContactRequest()">
-
+                    onclick="sendContactRequest()"
+                >
                     📩 Send Contact Request
-
                 </button>
+
+
+                <br>
+
+
+                <a
+                    href="https://wa.me/919324047709"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="whatsapp-btn"
+                >
+                    💬 WhatsApp
+                </a>
 
             </div>
 
@@ -692,7 +776,7 @@
             <br>
 
 
-            <!-- Quick Information -->
+            <!-- QUICK INFORMATION -->
 
             <div class="profile-card">
 
@@ -712,18 +796,17 @@
                     ✓ Local Artisan
                 </p>
 
-               >
-
             </div>
 
 
         </div>
 
+
     </main>
 
 
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -776,7 +859,7 @@
                 </h3>
 
                 <p>
-                    Email: support@hiddengems.com
+                    WhatsApp: +91 93240 47709
                 </p>
 
                 <p>
@@ -799,13 +882,14 @@
 
 
 
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script>
 
         function sendContactRequest() {
 
-            alert(
-                "Contact request sent successfully! The artisan will receive your request."
-            );
+            window.location.href =
+                "contact.html";
 
         }
 
