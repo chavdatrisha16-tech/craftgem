@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Contact Artisan | Hidden Gems</title>
@@ -10,17 +12,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #faf8f5;
             color: #333;
         }
+
 
         /* ================= NAVBAR ================= */
 
@@ -31,15 +36,19 @@
             padding: 18px 0;
         }
 
+
         .nav-container {
             width: 90%;
             max-width: 1200px;
             margin: auto;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 30px;
         }
+
 
         .logo {
             text-decoration: none;
@@ -47,6 +56,7 @@
             font-size: 24px;
             font-weight: 700;
         }
+
 
         .nav-links {
             display: flex;
@@ -56,21 +66,25 @@
             justify-content: center;
         }
 
+
         .nav-links a {
             text-decoration: none;
             color: #555;
             font-size: 15px;
         }
 
+
         .nav-links a:hover {
             color: #e87535;
         }
+
 
         .nav-buttons {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
 
         .login-btn,
         .register-btn,
@@ -86,11 +100,13 @@
             color: #e87535;
         }
 
+
         .register-btn,
         .dashboard-btn {
             background: #e87535;
             color: white;
         }
+
 
         .logout-btn {
             background: #555;
@@ -98,11 +114,13 @@
             color: white;
         }
 
+
         .welcome-text {
             font-size: 14px;
             color: #555;
             white-space: nowrap;
         }
+
 
         /* ================= PAGE HEADER ================= */
 
@@ -112,6 +130,7 @@
             padding: 0 25px;
         }
 
+
         .eyebrow {
             font-size: 12px;
             letter-spacing: 3px;
@@ -120,17 +139,20 @@
             margin-bottom: 15px;
         }
 
+
         .page-header h1 {
             font-size: 42px;
             margin-bottom: 12px;
             color: #333;
         }
 
+
         .page-header p {
             color: #777;
             font-size: 16px;
             line-height: 1.7;
         }
+
 
         /* ================= MAIN ================= */
 
@@ -145,6 +167,7 @@
             align-items: start;
         }
 
+
         /* ================= ARTISAN CARD ================= */
 
         .artisan-card {
@@ -155,28 +178,34 @@
             text-align: center;
         }
 
+
         .artisan-image {
             width: 85px;
             height: 85px;
             margin: 0 auto 20px;
             border-radius: 50%;
             background: #f4d8b8;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 40px;
         }
+
 
         .artisan-card h2 {
             font-size: 21px;
             margin-bottom: 8px;
         }
 
+
         .artisan-role {
             color: #f0bd83;
             font-size: 14px;
             margin-bottom: 25px;
         }
+
 
         .artisan-detail {
             text-align: left;
@@ -185,6 +214,7 @@
             font-size: 14px;
             color: #ddd;
         }
+
 
         .privacy-box {
             margin-top: 22px;
@@ -197,6 +227,29 @@
             color: #ddd;
         }
 
+
+        /* ================= WHATSAPP BUTTON ================= */
+
+        .whatsapp-btn {
+            display: block;
+            margin-top: 18px;
+            padding: 13px 18px;
+            border-radius: 7px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.2s ease;
+        }
+
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+        }
+
+
         /* ================= FORM ================= */
 
         .contact-form-box {
@@ -206,10 +259,12 @@
             box-shadow: 0 5px 25px rgba(0,0,0,0.06);
         }
 
+
         .contact-form-box h2 {
             font-size: 25px;
             margin-bottom: 8px;
         }
+
 
         .contact-form-box > p {
             color: #777;
@@ -218,9 +273,11 @@
             margin-bottom: 30px;
         }
 
+
         .form-group {
             margin-bottom: 22px;
         }
+
 
         .form-group label {
             display: block;
@@ -229,6 +286,7 @@
             margin-bottom: 9px;
             color: #444;
         }
+
 
         .form-group input,
         .form-group select,
@@ -243,16 +301,19 @@
             background: white;
         }
 
+
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             border-color: #e87535;
         }
 
+
         .form-group textarea {
             min-height: 130px;
             resize: vertical;
         }
+
 
         .submit-btn {
             width: 100%;
@@ -266,9 +327,11 @@
             cursor: pointer;
         }
 
+
         .submit-btn:hover {
             background: #d96527;
         }
+
 
         .message {
             display: none;
@@ -278,17 +341,20 @@
             font-size: 14px;
         }
 
+
         .message.success {
             display: block;
             background: #e9f7ed;
             color: #26733d;
         }
 
+
         .message.error {
             display: block;
             background: #fdecec;
             color: #a83232;
         }
+
 
         /* ================= FOOTER ================= */
 
@@ -300,6 +366,7 @@
             font-size: 13px;
         }
 
+
         /* ================= MOBILE ================= */
 
         @media (max-width: 800px) {
@@ -308,141 +375,205 @@
                 flex-direction: column;
             }
 
+
             .nav-links {
                 flex-wrap: wrap;
                 gap: 15px;
             }
 
+
             .page-header {
                 margin-top: 45px;
             }
 
+
             .page-header h1 {
                 font-size: 32px;
             }
+
 
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
 
+
             .contact-form-box {
                 padding: 25px;
             }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar">
+
         <div class="nav-container">
+
 
             <a href="index.html" class="logo">
                 Hidden Gems
             </a>
 
+
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="artisans.html">Explore Artisans</a>
-            
-                <a href="index.html#about">About Us</a>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="artisans.html">
+                    Explore Artisans
+                </a>
+
+                <a href="index.html#about">
+                    About Us
+                </a>
+
             </div>
 
+
             <!-- script.js will automatically control this -->
+
             <div class="nav-buttons"></div>
 
+
         </div>
+
     </nav>
+
 
 
     <!-- ================= PAGE HEADER ================= -->
 
     <section class="page-header">
 
+
         <div class="eyebrow">
             CONNECT WITH ARTISANS
         </div>
 
+
         <h1>
             Send a Contact Request
         </h1>
+
 
         <p>
             Interested in an artisan's work? Send a request and connect
             with them through Hidden Gems.
         </p>
 
+
     </section>
+
 
 
     <!-- ================= CONTACT SECTION ================= -->
 
     <main class="contact-container">
 
+
         <!-- ARTISAN INFORMATION -->
 
         <div class="artisan-card">
+
 
             <div class="artisan-image">
                 🧑‍🎨
             </div>
 
+
             <h2>
                 Meena Sharma
             </h2>
+
 
             <div class="artisan-role">
                 Handicraft Artist
             </div>
 
+
             <div class="artisan-detail">
                 📍 Mumbai, Maharashtra
             </div>
+
 
             <div class="artisan-detail">
                 🎨 Traditional Handicrafts
             </div>
 
+
             <div class="artisan-detail">
                 ⭐ 8+ Years Experience
             </div>
+
 
             <div class="artisan-detail">
                 ✓ Verified Artisan
             </div>
 
+
             <div class="privacy-box">
+
                 🔒 <strong>Privacy Protected</strong><br>
+
                 Your request will be sent through the platform.
                 The artisan's personal contact details will not
                 be displayed directly.
+
             </div>
 
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://wa.me/919324047709"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-btn"
+            >
+                💬 WhatsApp Us
+            </a>
+
+
         </div>
+
 
 
         <!-- CONTACT FORM -->
 
         <div class="contact-form-box">
 
+
             <h2>
                 Contact Request
             </h2>
+
 
             <p>
                 Please provide your details and explain why you would
                 like to contact this artisan.
             </p>
 
+
             <form id="contactForm">
 
+
                 <div class="form-group">
+
                     <label for="fullName">
                         Your Full Name *
                     </label>
+
 
                     <input
                         type="text"
@@ -450,13 +581,17 @@
                         placeholder="Enter your name"
                         required
                     >
+
                 </div>
 
 
+
                 <div class="form-group">
+
                     <label for="email">
                         Email Address *
                     </label>
+
 
                     <input
                         type="email"
@@ -464,13 +599,17 @@
                         placeholder="Enter your email"
                         required
                     >
+
                 </div>
 
 
+
                 <div class="form-group">
+
                     <label for="reason">
                         Reason for Contact *
                     </label>
+
 
                     <select id="reason" required>
 
@@ -495,14 +634,18 @@
                         </option>
 
                     </select>
+
                 </div>
+
 
 
                 <div class="form-group">
 
+
                     <label for="message">
                         Message *
                     </label>
+
 
                     <textarea
                         id="message"
@@ -510,7 +653,9 @@
                         required
                     ></textarea>
 
+
                 </div>
+
 
 
                 <button
@@ -520,16 +665,21 @@
                     ✉ Send Contact Request
                 </button>
 
+
                 <div
                     id="formMessage"
                     class="message"
                 ></div>
 
+
             </form>
+
 
         </div>
 
+
     </main>
+
 
 
     <!-- ================= FOOTER ================= -->
@@ -543,14 +693,18 @@
     </footer>
 
 
+
     <!-- ================= JAVASCRIPT ================= -->
 
     <script>
+
         const SUPABASE_URL =
             "https://tsgrrnivmaujjteavgkf.supabase.co";
 
+
         const SUPABASE_PUBLISHABLE_KEY =
             "sb_publishable_1b5y0mhKKjobcvFzXHIHOQ_vco2_Ldl";
+
 
         const supabaseClient =
             window.supabase.createClient(
@@ -559,116 +713,155 @@
             );
 
 
+
         /* ================= CONTACT FORM ================= */
 
         const contactForm =
             document.getElementById("contactForm");
 
+
         const formMessage =
             document.getElementById("formMessage");
 
 
-        contactForm.addEventListener("submit", async function(event) {
 
-            event.preventDefault();
+        contactForm.addEventListener(
+            "submit",
+            async function(event) {
 
-            formMessage.className = "message";
-            formMessage.textContent = "";
+                event.preventDefault();
 
 
-            const {
-                data: {
-                    user
+                formMessage.className = "message";
+                formMessage.textContent = "";
+
+
+
+                const {
+                    data: {
+                        user
+                    }
+                } = await supabaseClient.auth.getUser();
+
+
+
+                if (!user) {
+
+                    formMessage.className =
+                        "message error";
+
+
+                    formMessage.textContent =
+                        "Please login before sending a contact request.";
+
+
+                    return;
+
                 }
-            } = await supabaseClient.auth.getUser();
 
 
-            if (!user) {
+
+                const fullName =
+                    document
+                        .getElementById("fullName")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const reason =
+                    document
+                        .getElementById("reason")
+                        .value;
+
+
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
+
+
+
+                /*
+                 * Demo artisan ID.
+                 *
+                 * Later this will come dynamically
+                 * from the selected artisan.
+                 */
+
+                const artisanId = 1;
+
+
+
+                const finalMessage =
+                    "Reason: " + reason +
+                    "\n\n" +
+                    message;
+
+
+
+                const {
+                    error
+                } = await supabaseClient
+                    .from("contact_requests")
+                    .insert({
+
+                        user_id: user.id,
+
+                        artisan_id: artisanId,
+
+                        message: finalMessage
+
+                    });
+
+
+
+                if (error) {
+
+                    console.error(error);
+
+
+                    formMessage.className =
+                        "message error";
+
+
+                    formMessage.textContent =
+                        "Unable to send request. Please try again.";
+
+
+                    return;
+
+                }
+
+
 
                 formMessage.className =
-                    "message error";
+                    "message success";
+
 
                 formMessage.textContent =
-                    "Please login before sending a contact request.";
+                    "Your contact request has been sent successfully!";
 
-                return;
+
+                contactForm.reset();
+
             }
+        );
 
-
-            const fullName =
-                document.getElementById("fullName").value.trim();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const reason =
-                document.getElementById("reason").value;
-
-            const message =
-                document.getElementById("message").value.trim();
-
-
-            /*
-             * Demo artisan ID.
-             *
-             * Later this will come dynamically
-             * from the selected artisan.
-             */
-
-            const artisanId = 1;
-
-
-            const finalMessage =
-                "Reason: " + reason +
-                "\n\n" +
-                message;
-
-
-            const {
-                error
-            } = await supabaseClient
-                .from("contact_requests")
-                .insert({
-
-                    user_id: user.id,
-
-                    artisan_id: artisanId,
-
-                    message: finalMessage
-
-                });
-
-
-            if (error) {
-
-                console.error(error);
-
-                formMessage.className =
-                    "message error";
-
-                formMessage.textContent =
-                    "Unable to send request. Please try again.";
-
-                return;
-            }
-
-
-            formMessage.className =
-                "message success";
-
-            formMessage.textContent =
-                "Your contact request has been sent successfully!";
-
-
-            contactForm.reset();
-
-        });
 
 
         /* ================= LOAD USER DETAILS ================= */
 
         async function loadUserDetails() {
 
+
             const {
                 data: {
                     user
@@ -676,7 +869,9 @@
             } = await supabaseClient.auth.getUser();
 
 
+
             if (!user) return;
+
 
 
             const {
@@ -688,21 +883,33 @@
                 .single();
 
 
+
             if (profile) {
 
-                document.getElementById("fullName").value =
+                document
+                    .getElementById("fullName")
+                    .value =
                     profile.full_name || "";
 
-                document.getElementById("email").value =
+
+                document
+                    .getElementById("email")
+                    .value =
                     profile.email || user.email || "";
 
-            } else {
+            }
 
-                document.getElementById("email").value =
+            else {
+
+                document
+                    .getElementById("email")
+                    .value =
                     user.email || "";
 
             }
+
         }
+
 
 
         loadUserDetails();
@@ -710,10 +917,14 @@
     </script>
 
 
+
     <!-- IMPORTANT:
          Main site navbar logic.
     -->
+
     <script src="script.js"></script>
 
+
 </body>
+
 </html>
